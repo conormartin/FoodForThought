@@ -1,0 +1,15 @@
+.sidebar {
+  border: 2px solid #374348;
+  width:250px;
+  float: left;
+}
+
+.post {
+  border: 2px solid #374348;
+  padding-left: 252px;
+  float: right;
+
+}
+body,h1,h2,h3,h4,h5 {
+  font-family: "Raleway", sans-serif
+}

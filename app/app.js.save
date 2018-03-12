@@ -1,0 +1,86 @@
+  <eta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nutrition Search</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Navbar (bootstrap default)-->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Nutrition Search</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                <!-- Active makes the homepage link active -->
+                    <li class="active"> <a href="">Home</a></li>
+                    <li> <a href="">About</a></li>
+                    <li> <a href="">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- class fa fa places icons from fontAwesome -->
+                    <li><a href="#"><i class="fa fa-user-plus"></i> Sign Up</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 id="header">Nutrition Search</h1>
+    <!-- Search Bar -->
+    <form type=get action="SearchResults.html" id="a">
+        <input type=text name=searchBar size=10 id="searchBar">
+        <input type=submit value="Search" id="submitBtn" onclick="getSearchValue()">
+    </form>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>))
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
+
+// function makes Ajax call which takes in userinput & makes get request
+function getResult(searchTerm) {
+    var storedSearchTerm;
+    // Get request to server
+    $.ajax({
+        type: 'GET',
+        async: false,
+        url: 'https://api.edamam.com/api/food-database/parser?ingr='+searchTerm+'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6&page=0',
+        success: function(data) {
+            //storedSearchTerm stores all data in the hints child
+            storedSearchTerm = data.hints;
+            console.log(data);
+        }
+    });
+    // places search results in container in searchresults.html file
+    storedSearchTerm.map(function(item) {
+        var url =item.food.uri;
+        var label = item.food.label;
+        $('.resultContainer').append(
+            '<div class="itemBar">'+
+            '<h3> <a href='+ url + '>' + label + '</h2>' +
+            '</div>'
+        )
+    });
+}
+// Splits url string & saves everything after = sign
+//function getSearchValue(str) {
+//    return str.split('=')[1];
+//}
+// call getSearchValue on url
+//searchValue = getSearchValue(document.URL);
+// call get result on search term
+//getResult(searchValue);
