@@ -1,4 +1,4 @@
-cd /Users/conormartin/Documents/GitHub/FoodForThought
+cd /home/vmuser/FoodForThought
 git pull
 pkill -f "node app.js"
 cd app
