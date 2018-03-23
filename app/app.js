@@ -1,5 +1,3 @@
-//Hello World
-
 var express = require('express');
 var request = require("request");
 var bodyParser = require('body-parser');
@@ -75,10 +73,48 @@ app.get("/blogPage", function(req, res) {
     res.render("blogPage");
 });
 
+// arrays to save temporarily values until firebase is working
+var foodType = [];
+var measurement = [];
+var loggedFood = [];
+
+app.get("/foodlog", function(req,res) {
+    res.render("foodLog", {foodType:foodType, measures:measurement, loggedFood:loggedFood}); 
+})
+
+app.post("/foodlog", function(req,res) {
+    var searchTerm = req.body.searchTerm;
+    request({
+        url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
+        method: "GET",
+        json: true,
+    }, function (error, response, body){
+        for(var i=0; i<body.hints.length; i++){
+            foodType.push(body.hints[i].food);
+        }
+        for(var i=0; i<body.hints[0].measures.length; i++){
+            measurement.push(body.hints[0].measures[i]);
+        }
+
+        res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
+    });
+});
+
+app.get("/foodlog:submitted", function(req,res) {
+  
+    var quantity = req.query.quantity;
+    var measure = req.query.measurement;
+    var food = req.query.foodType;
+    
+    loggedFood.push(food + " - " + quantity + measure);
+    
+    res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
+});
+
 // Reroutes all other requests to a default error message
 app.get("*", function(req, res) {
     res.send("Page Does Not Exist!");
 });
 
 // Activates server on port 3000
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('Example app listening on port 3000!'));

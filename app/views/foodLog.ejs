@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <title>Food For Thought</title>
+  <link rel="stylesheet" type="text/css" href="home.css" />
+  <!--link for search bar button style below -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="logPageStyle.css" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="logPageScript.js"></script>
+</head>
+
+<body>
+<!-- Navigation bar -->
+  <div class="topnav">
+    <h1>Food For Thought</h1>
+  <a class="active" href="/">Home</a>
+  <a href="/blogPage">Blog</a>
+  <a href="#contact">Contact</a>
+  <a href="/foodlog">Log Diet</a>
+  <a href="#about">About</a>
+  <a href="#ContactUs">Contact Us</a>
+  <div class="search-container">
+    <form action="/search" method="POST">
+      <input type="text" placeholder="Search.." name="searchTerm">
+      <button ><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+<!-- End of nav bar -->
+
+<div class="row">
+  <!-- left hand side of page column-->
+  <div class="column">
+    <div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#search">Search</a></li>
+    <li><a data-toggle="tab" href="#diary">Diary</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="Search" class="tab-pane fade in active">
+      <h3>Search</h3>
+      <div class="wrap">
+   <form class="search" action="/foodlog" method="POST">
+      <input type="search" name="searchTerm" class="searchTerm" placeholder="Search for food">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+    </form>
+
+    <% foodType.forEach(function(foodType, measurement){ %>
+    <form id="resultsForm" action="/foodlog:submitted" method="GET">
+        <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+        <input name="quantity" type="text" placeholder="Enter Quantity...">
+        <div class="dropdown">
+            <select name="measurement">Measurement
+            <div class="dropdown-content">
+                <% measures.forEach(function(measurement){%>
+                    <option value= '<%-JSON.stringify(measurement.label)%>' > <%-JSON.stringify(measurement.label)%> </option>
+                <%  }); %>
+            </div>
+            </select>
+        </div>
+        <input type="submit">
+    </form>
+  <%  }); %>
+
+ </div>
+</div>
+    <div id="Diary" class="tab-pane fade">
+      <h3>Diary</h3>
+    </div>
+  </div>
+</div>  
+
+</div>
+<!--end left column-->
+
+  <!--right hand side of the page column-->
+  <div class="column" >
+<!--start of from for logging food-->
+  <div id=foodInput>
+  <h1 align="center">Diary</h1>
+  <form method="GET" id="my_form"></form>
+
+    <table id="resultsTable" align="center" class="rt" >
+      <tr>
+        <th class="rt-a">Food</th>
+        <th class="rt-a">Quantity</th>
+        <th class="rt-a">Calories</th>
+        <th class="rt-a">Protein</th>
+        <th class="rt-a">   Fat   </th>
+      </tr>
+
+      <tr>
+          <% loggedFood.forEach(function(loggedFood){%>
+          <td class="b"><%= loggedFood %></td>
+        <%  }); %>
+        <td class="b" contenteditable="false">-</td>
+        <td class="b" contenteditable="false">-</td>
+        <td class="b" contenteditable="false">-</td>
+        <td class="b" contenteditable="false">-</td>
+        <td id="rt-1" class="rt-c" contenteditable="false">-</td>
+      </tr>
+
+    </table>
+    <br />
+
+    <div align="center">
+      <button type="submit" onClick="addRow();" action>Add to log</button>
+    </div>
+  </div>
+<!--end of food logging form-->
+  </div>
+  <!--end right column-->
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* .search {
+  width: 80%;
+  position: relative;
+} */
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #008b8b;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #008b8b;
+}
+
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #008b8b;
+  background: #008b8b;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+}
+
+/*from cs230 assignmen 2*/
+
+h2{
+  font-family: Arial, sans-serif;
+}
+
+.rt {
+  border-collapse:collapse;
+  border-spacing:0
+
+}
+
+div td {
+  font-family: Arial, Helvetica, sans-serif !important;
+  text-align:center;
+  vertical-align: top;
+}
+
+/*each student column */
+.rt td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+
+/*heading colums */
+.rt th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding:10px 5px;
+  border-style:solid;
+  border-width:1px;
+  overflow:hidden;
+  word-break:normal;
+}
+/*heading columns except final grade */
+.rt .rt-a {
+  background-color:#008b8b;
+  font-weight:bold;
+  font-family:Arial, Helvetica, sans-serif !important;
+  text-align:center;
+  vertical-align:top;
+}
+
+/*final grade for each student */
+.rt .rt-d {
+  font-family:Arial, Helvetica, sans-serif !important;
+  text-align:right;
+  vertical-align:top;
+}
+
+
+/*each students assignments */
+.rt .rt-c {
+  font-family:Arial, Helvetica, sans-serif !important;
+  text-align:right;
+  vertical-align:top;
+}
+
+
+/*for buttons */
+button {
+  font-family: Arial, sans-serif;
+  border-radius: 20px;
+  background-color: lightblue;
+  display: inline-block;
+}
