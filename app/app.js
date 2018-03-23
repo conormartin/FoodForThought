@@ -79,7 +79,7 @@ var measurement = [];
 var loggedFood = [];
 
 app.get("/foodlog", function(req,res) {
-    res.render("foodLog", {foodType:foodType, measures:measurement, loggedFood:loggedFood}); 
+    res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood}); 
 })
 
 app.post("/foodlog", function(req,res) {
