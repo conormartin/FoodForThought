@@ -12,8 +12,8 @@ app.get("/", function(req, res){
 });
 
 // Runs this function when user clicks on SearchResults page
-app.post("/search", function(req, res) {
-    var searchTerm = req.body.searchTerm;
+app.get("/search", function(req, res) {
+    var searchTerm = req.query.searchTerm;
 
     request({
         url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
@@ -80,6 +80,8 @@ var loggedFood = [];
 
 app.get("/foodlog", function(req,res) {
     res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood}); 
+    foodType = [];
+    measurement = [];
 })
 
 app.post("/foodlog", function(req,res) {
@@ -95,13 +97,11 @@ app.post("/foodlog", function(req,res) {
         for(var i=0; i<body.hints[0].measures.length; i++){
             measurement.push(body.hints[0].measures[i]);
         }
-
         res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
     });
 });
 
 app.get("/foodlog:submitted", function(req,res) {
-  
     var quantity = req.query.quantity;
     var measure = req.query.measurement;
     var food = req.query.foodType;
@@ -111,9 +111,21 @@ app.get("/foodlog:submitted", function(req,res) {
     res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
 });
 
+app.get("/dietbreakdown", function(req, res){
+    res.render("dietbreakdown");
+});
+
+app.get("/ContactUs", function(req, res){
+    res.render("contact");
+});
+
+app.get("/about", function(req, res){
+    res.render("about");
+});
+
 // Reroutes all other requests to a default error message
 app.get("*", function(req, res) {
-    res.send("Page Does Not Exist!");
+    res.render("errorPage");
 });
 
 // Activates server on port 3000

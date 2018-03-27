@@ -16,111 +16,83 @@
 </head>
 
 <body>
-<!-- Navigation bar -->
-  <div class="topnav">
-    <h1>Food For Thought</h1>
-  <a class="active" href="/">Home</a>
-  <a href="/blogPage">Blog</a>
-  <a href="#contact">Contact</a>
-  <a href="/foodlog">Log Diet</a>
-  <a href="#about">About</a>
-  <a href="#ContactUs">Contact Us</a>
-  <div class="search-container">
-    <form action="/search" method="POST">
-      <input type="text" placeholder="Search.." name="searchTerm">
-      <button ><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-<!-- End of nav bar -->
+ <% include partials/header.ejs %>
 
-<div class="row">
-  <!-- left hand side of page column-->
-  <div class="column">
-    <div class="container">
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#search">Search</a></li>
-    <li><a data-toggle="tab" href="#diary">Diary</a></li>
-  </ul>
+  <div class="row">
+    <!-- left hand side of page column-->
+    <div class="column">
+      <div class="container">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#search">Search</a></li>
+          <li><a data-toggle="tab" href="#diary">Diary</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="Search" class="tab-pane fade in active">
+            <h3>Search</h3>
+            <div class="wrap">
+              <form class="search" action="/foodlog" method="POST">
+                <input type="search" name="searchTerm" class="searchTerm" placeholder="Search for food">
+                <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+              </form>
 
-  <div class="tab-content">
-    <div id="Search" class="tab-pane fade in active">
-      <h3>Search</h3>
-      <div class="wrap">
-   <form class="search" action="/foodlog" method="POST">
-      <input type="search" name="searchTerm" class="searchTerm" placeholder="Search for food">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-    </form>
-
-    <% foodType.forEach(function(foodType, measurement){ %>
-    <form id="resultsForm" action="/foodlog:submitted" method="GET">
-        <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
-        <input name="quantity" type="text" placeholder="Enter Quantity...">
-        <div class="dropdown">
-            <select name="measurement">Measurement
-            <div class="dropdown-content">
-                <% measures.forEach(function(measurement){%>
-                    <option value= '<%-JSON.stringify(measurement.label)%>' > <%-JSON.stringify(measurement.label)%> </option>
-                <%  }); %>
-            </div>
-            </select>
+            <% foodType.forEach(function(foodType, measurement){ %>
+              <form id="resultsForm" action="/foodlog:submitted" method="GET">
+                <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+                <input name="quantity" type="text" placeholder="Enter Quantity...">
+                <div class="dropdown">
+                  <select name="measurement">Measurement
+                    <div class="dropdown-content">
+                      <% measures.forEach(function(measurement){%>
+                        <option value= '<%-JSON.stringify(measurement.label)%>' > <%-JSON.stringify(measurement.label)%> </option>
+                      <%  }); %>
+                    </div>
+                  </select>
+                </div>
+                <input type="submit">
+              </form>
+            <%  }); %>
+          </div>
         </div>
-        <input type="submit">
-    </form>
-  <%  }); %>
-
- </div>
-</div>
-    <div id="Diary" class="tab-pane fade">
-      <h3>Diary</h3>
-    </div>
+        <div id="Diary" class="tab-pane fade">
+          <h3>Diary</h3>
+        </div>
+      </div>
+    </div>  
   </div>
-</div>  
-
-</div>
-<!--end left column-->
+  <!--end left column-->
 
   <!--right hand side of the page column-->
   <div class="column" >
-<!--start of from for logging food-->
-  <div id=foodInput>
-  <h1 align="center">Diary</h1>
-  <form method="GET" id="my_form"></form>
-
-    <table id="resultsTable" align="center" class="rt" >
-      <tr>
-        <th class="rt-a">Food</th>
-        <th class="rt-a">Quantity</th>
-        <th class="rt-a">Calories</th>
-        <th class="rt-a">Protein</th>
-        <th class="rt-a">   Fat   </th>
-      </tr>
-
-      <% loggedFood.forEach(function(loggedFood){%>
-      <tr>
-        <td class="b"><%= loggedFood %></td>
-        <td class="b" contenteditable="false">-</td>
-        <td class="b" contenteditable="false">-</td>
-        <td class="b" contenteditable="false">-</td>
-        <td class="b" contenteditable="false">-</td>
-      </tr>
-      <%  }); %>
-
-    </table>
-    <br />
-
+  <!--start of from for logging food-->
+    <div id=foodInput>
+      <h1 align="center">Diary</h1>
+      <table id="resultsTable" align="center" class="rt" >
+        <tr>
+          <th class="rt-a">Food</th>
+          <th class="rt-a">Quantity</th>
+          <th class="rt-a">Calories</th>
+          <th class="rt-a">Protein</th>
+          <th class="rt-a">   Fat   </th>
+        </tr>
+        <% loggedFood.forEach(function(loggedFood){%>
+          <tr>
+            <td class="b"><%= loggedFood %></td>
+            <td class="b" contenteditable="false">-</td>
+            <td class="b" contenteditable="false">-</td>
+            <td class="b" contenteditable="false">-</td>
+            <td class="b" contenteditable="false">-</td>
+          </tr>
+        <%  }); %>
+      </table>
     <div align="center">
       <button type="submit" onClick="addRow();" action>Add to log</button>
     </div>
   </div>
-<!--end of food logging form-->
+  <!--end of food logging form-->
   </div>
   <!--end right column-->
-</div>
-
-</div>
-</div>
+  <form>
+      <button type="submit" id="analyseDiet" class="btn btn-lg btn-default btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
+  </form>
 </body>
 </html>
