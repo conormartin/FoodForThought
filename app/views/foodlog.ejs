@@ -98,16 +98,15 @@
         <th class="rt-a">   Fat   </th>
       </tr>
 
+      <% loggedFood.forEach(function(loggedFood){%>
       <tr>
-          <% loggedFood.forEach(function(loggedFood){%>
-          <td class="b"><%= loggedFood %></td>
-        <%  }); %>
+        <td class="b"><%= loggedFood %></td>
         <td class="b" contenteditable="false">-</td>
         <td class="b" contenteditable="false">-</td>
         <td class="b" contenteditable="false">-</td>
         <td class="b" contenteditable="false">-</td>
-        <td id="rt-1" class="rt-c" contenteditable="false">-</td>
       </tr>
+      <%  }); %>
 
     </table>
     <br />
