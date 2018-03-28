@@ -29,7 +29,7 @@
                         <div class="dropdown dropdown-content" >
                             <option class="dropdown dropdown-content" selected disabled> Measurement </option>
                             <% measures.forEach(function(measurement){%>
-                                <option class="dropdown dropdown-content" value= '<%-JSON.stringify(measurement.uri)%>' > <%-JSON.stringify(measurement.label)%> </option>
+                                <option class="dropdown dropdown-content" value= '<%-JSON.stringify(measurement.uri)%>'> <%-JSON.stringify(measurement.label)%> </option>
                             <%  }); %>
                         </div>
                         </select>

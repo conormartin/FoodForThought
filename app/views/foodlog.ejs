@@ -35,23 +35,24 @@
                 <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
               </form>
 
-            <% foodType.forEach(function(foodType, measurement){ %>
-              <form id="resultsForm" action="/foodlog:submitted" method="GET">
-                <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
-                <input name="quantity" type="text" placeholder="Enter Quantity...">
-                <div class="dropdown">
-                  <select name="measurement">Measurement
-                    <div class="dropdown-content">
+              <% foodType.forEach(function(foodType, measurement){ %>
+                <form id="resultsForm" action="/foodlog:submitted" method="GET">
+                  <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+                  <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
+                  <input name="quantity" type="text" placeholder="Enter Quantity...">
+                  <div class="dropdown">
+                    <select name="measurement">Measurement
                       <% measures.forEach(function(measurement){%>
-                        <option value= '<%-JSON.stringify(measurement.label)%>' > <%-JSON.stringify(measurement.label)%> </option>
-                      <%  }); %>
-                    </div>
-                  </select>
-                </div>
-                <input type="submit">
-              </form>
-            <%  }); %>
-          </div>
+                      <div class="dropdown-content">
+                          <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
+                        <%  }); %>
+                      </div>
+                    </select>
+                  </div>
+                  <input type="submit">
+                </form>
+              <%  }); %>
+            </div>
         </div>
         <div id="Diary" class="tab-pane fade">
           <h3>Diary</h3>
@@ -74,13 +75,17 @@
           <th class="rt-a">Protein</th>
           <th class="rt-a">   Fat   </th>
         </tr>
+        <% var i=0; %>
         <% loggedFood.forEach(function(loggedFood){%>
           <tr>
             <td class="b"><%= loggedFood %></td>
-            <td class="b" contenteditable="false">-</td>
-            <td class="b" contenteditable="false">-</td>
-            <td class="b" contenteditable="false">-</td>
-            <td class="b" contenteditable="false">-</td>
+            <% if (typeof loggedQuantity != 'undefined') { %>
+              <td class="b"><%= loggedQuantity[i] %></td>
+              <% i++; %>
+            <% } %>
+            <td class="b">-</td>
+            <td class="b">-</td>
+            <td class="b">-</td>
           </tr>
         <%  }); %>
       </table>
