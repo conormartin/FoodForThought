@@ -11,7 +11,7 @@
       <h3>Search</h3>
         <form class="form-inline" action="/foodlog" method="POST">
           <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
-          <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+          <button type="submit" class="btn btn-lg btn-primary searchButton">Search</i></button>
         </form>
         <% foodType.forEach(function(foodType, measurement){ %>
           <form id="resultsForm" action="/foodlog:submitted" method="GET">
