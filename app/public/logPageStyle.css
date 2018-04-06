@@ -13,6 +13,11 @@ body {
   width: 50%;
 }
 
+.container {
+  background-color: white;
+  margin: 0 50px;
+}
+
 #analyseDiet {
   float: right;
   margin: 20px;
