@@ -8,6 +8,11 @@
   width: 50%;
 }
 
+#analyseDiet {
+  float: right;
+  margin: 20px;
+}
+
 #analyseDiet a {
   color: white;
   text-decoration: none;
@@ -15,7 +20,6 @@
 
 table {
   margin: 0 auto;
-  font-size: 20px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 200px;
 }
@@ -26,12 +30,11 @@ table td {
 }
 
 table th {
-  font-size: 20px;
   border-bottom: 1px solid lightgrey;
   background-color: #374348;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 th:nth-child(n+2), td:nth-child(n+2) {
