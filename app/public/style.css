@@ -8,6 +8,9 @@ html, body {
   font-family: 'Poppins' , sans-serif;
   color: #222;
   position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 .navbar {
