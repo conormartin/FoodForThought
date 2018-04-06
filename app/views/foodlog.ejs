@@ -1,4 +1,5 @@
 <script type="text/javascript" src="logPageScript.js"></script>
+<link type="text/css" href="logPageStyle.css">
 <% include partials/head.ejs %>
 </head>
 <body>
@@ -8,19 +9,14 @@
     <!-- left hand side of page column-->
     <div class="column">
       <div class="container">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#search">Search</a></li>
-          <li><a data-toggle="tab" href="#diary">Diary</a></li>
-        </ul>
         <div class="tab-content">
           <div id="Search" class="tab-pane fade in active">
             <h3>Search</h3>
             <div class="wrap">
-              <form class="search" action="/foodlog" method="POST">
-                <input type="search" name="searchTerm" class="searchTerm" placeholder="Search for food">
-                <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+              <form class="form-inline" action="/foodlog" method="POST">
+                <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
+                <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
               </form>
-
               <% foodType.forEach(function(foodType, measurement){ %>
                 <form id="resultsForm" action="/foodlog:submitted" method="GET">
                   <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
@@ -40,9 +36,6 @@
               <%  }); %>
             </div>
         </div>
-        <div id="Diary" class="tab-pane fade">
-          <h3>Diary</h3>
-        </div>
       </div>
     </div>  
   </div>
@@ -50,7 +43,7 @@
 
   <!--right hand side of the page column-->
   <div class="column" >
-  <!--start of from for logging food-->
+  <!--start of form for logging food-->
     <div id=foodInput>
       <h1 align="center">Diary</h1>
       <table id="resultsTable" align="center" class="rt" >
@@ -59,7 +52,7 @@
           <th class="rt-a">Quantity</th>
           <th class="rt-a">Calories</th>
           <th class="rt-a">Protein</th>
-          <th class="rt-a">   Fat   </th>
+          <th class="rt-a">Fat</th>
         </tr>
         <% var i=0; %>
         <% loggedFood.forEach(function(loggedFood){%>
@@ -75,15 +68,12 @@
           </tr>
         <%  }); %>
       </table>
-    <div align="center">
-      <button type="submit" onClick="addRow();" action>Add to log</button>
-    </div>
   </div>
   <!--end of food logging form-->
   </div>
   <!--end right column-->
   <form>
-      <button type="submit" id="analyseDiet" class="btn btn-lg btn-default btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
+      <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
   </form>
 
 
