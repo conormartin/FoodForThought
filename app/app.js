@@ -15,6 +15,15 @@ app.get("/", function(req, res){
 });
 
 
+//render login & signup page
+app.get("/login", function(req,res) {
+    res.render("login");
+})
+
+app.get("/signup", function(req,res) {
+    res.render("createAccount");
+})
+
 
 
 // get request to API when user searches for food in navbar
@@ -84,7 +93,7 @@ app.get("/Nutrients", function(req, res) {
 
 
 //renders blog page
-app.get("/blogPage", function(req, res) {
+app.get("/blog", function(req, res) {
     res.render("blogPage");
 });
 
