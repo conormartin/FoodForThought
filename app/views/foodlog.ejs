@@ -46,21 +46,21 @@
         <% var i=0; %>
         <% loggedFood.forEach(function(loggedFood){%>
           <tr>
-            <td class="b"><%= loggedFood %></td>
+            <td><%= loggedFood %></td>
             <% if (typeof loggedQuantity != 'undefined') { %>
-              <td class="b"><%= loggedQuantity[i] %></td>
+              <td><%= loggedQuantity[i] %></td>
               <% i++; %>
             <% } %>
-            <td class="b">-</td>
-            <td class="b">-</td>
-            <td class="b">-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
           </tr>
         <%  }); %>
       </table>
       <!--end of food logging form-->
       <form>
-          <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
-        </form>
+        <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
+      </form>
     </div>
     <!--end right column-->
   </div>
