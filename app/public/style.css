@@ -302,6 +302,10 @@ figure {
     padding: 1rem;
 }
 
+.container {
+  min-height:100%;
+  position:relative;
+}
 
 
 

@@ -3,11 +3,11 @@
 <body>
 <% include partials/navbar.ejs %>
 
-  <div>
+  <div class="container">
       <% nutrients.forEach(function(nutrients){ %>
           <li><%- JSON.stringify(nutrients) %>
       <% }); %>
-  </div> -->
+  </div>
 
   <% include partials/footer.ejs %>
     
