@@ -94,7 +94,7 @@ app.get("/nutrients", function(req, res) {
 
 //renders blog page
 app.get("/blog", function(req, res) {
-    res.render("blogPage");
+    res.render("blog");
 });
 
 
