@@ -5,75 +5,70 @@
 <body>
 <% include partials/navbar.ejs %>
 
-  <div class="row">
-    <!-- left hand side of page column-->
-    <div class="column1">
-      <div class="container">
-        <h3>Search</h3>
-          <form class="form-inline" action="/foodlog" method="POST">
-            <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
-            <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+  <!-- left hand side of page column-->
+  <div class="column1">
+    <div class="container">
+      <h3>Search</h3>
+        <form class="form-inline" action="/foodlog" method="POST">
+          <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
+          <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+        </form>
+        <% foodType.forEach(function(foodType, measurement){ %>
+          <form id="resultsForm" action="/foodlog:submitted" method="GET">
+            <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+            <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
+            <input name="quantity" type="text" placeholder="Enter Quantity...">
+            <div class="dropdown">
+              <select name="measurement">Measurement
+                <% measures.forEach(function(measurement){%>
+                <div class="dropdown-content">
+                    <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
+                  <%  }); %>
+                </div>
+              </select>
+            </div>
+            <input type="submit">
           </form>
-          <% foodType.forEach(function(foodType, measurement){ %>
-            <form id="resultsForm" action="/foodlog:submitted" method="GET">
-              <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
-              <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-              <input name="quantity" type="text" placeholder="Enter Quantity...">
-              <div class="dropdown">
-                <select name="measurement">Measurement
-                  <% measures.forEach(function(measurement){%>
-                  <div class="dropdown-content">
-                      <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
-                    <%  }); %>
-                  </div>
-                </select>
-              </div>
-              <input type="submit">
-            </form>
-        <%  }); %>
-      </div>
-    </div>  
-  </div>
+      <%  }); %>
+    </div>
+  </div>  
   <!--end left column-->
 
   <!--right hand side of the page column-->
-  <div class="row">
-    <div class="column2" >
-      <div class="container">
-      <!--start of form for logging food-->
-        <div id=foodInput>
-          <h1 align="center">Diary</h1>
-          <table id="resultsTable" class="rt" >
+  <div class="column2" >
+    <div class="container">
+    <!--start of form for logging food-->
+      <div id=foodInput>
+        <h1 align="center">Diary</h1>
+        <table id="resultsTable" class="rt" >
+          <tr>
+            <th class="rt-a">Food</th>
+            <th class="rt-a">Quantity</th>
+            <th class="rt-a">Calories</th>
+            <th class="rt-a">Protein</th>
+            <th class="rt-a">Fat</th>
+          </tr>
+          <% var i=0; %>
+          <% loggedFood.forEach(function(loggedFood){%>
             <tr>
-              <th class="rt-a">Food</th>
-              <th class="rt-a">Quantity</th>
-              <th class="rt-a">Calories</th>
-              <th class="rt-a">Protein</th>
-              <th class="rt-a">Fat</th>
+              <td class="b"><%= loggedFood %></td>
+              <% if (typeof loggedQuantity != 'undefined') { %>
+                <td class="b"><%= loggedQuantity[i] %></td>
+                <% i++; %>
+              <% } %>
+              <td class="b">-</td>
+              <td class="b">-</td>
+              <td class="b">-</td>
             </tr>
-            <% var i=0; %>
-            <% loggedFood.forEach(function(loggedFood){%>
-              <tr>
-                <td class="b"><%= loggedFood %></td>
-                <% if (typeof loggedQuantity != 'undefined') { %>
-                  <td class="b"><%= loggedQuantity[i] %></td>
-                  <% i++; %>
-                <% } %>
-                <td class="b">-</td>
-                <td class="b">-</td>
-                <td class="b">-</td>
-              </tr>
-            <%  }); %>
-          </table>
-        </div>
-      <!--end of food logging form-->
+          <%  }); %>
+        </table>
       </div>
-      <!--end right column-->
-        <form>
-            <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
-        </form>
+    <!--end of food logging form-->
     </div>
+    <!--end right column-->
+      <form>
+          <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
+      </form>
   </div>
-
 
   <% include partials/footer.ejs %>
