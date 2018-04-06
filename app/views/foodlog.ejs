@@ -5,6 +5,7 @@
 <% include partials/navbar.ejs %>
   <div class="container">
     <!-- left hand side of page column-->
+    <div class="col1">
       <h3>Search</h3>
         <form class="form-inline" action="/foodlog" method="POST">
           <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
@@ -27,9 +28,11 @@
             <input type="submit">
           </form>
       <%  }); %>
+    </div>  
     <!--end left column-->
 
     <!--right hand side of the page column-->
+    <div class="col2">
     <!--start of form for logging food-->
       <h1 align="center">Diary</h1>
       <table id="resultsTable">
@@ -58,6 +61,7 @@
       <form>
         <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
       </form>
+    </div>
     <!--end right column-->
   </div>
   <% include partials/footer.ejs %>
