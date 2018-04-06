@@ -163,7 +163,9 @@ footer {
   background-color: #8E9294;
   color: whitesmoke;
   padding-top: 2rem;
+  position:fixed; bottom:0; left:0; right:0; height:30px;
 }
+
 hr.light {
 
   border-top: 1px solid white;
