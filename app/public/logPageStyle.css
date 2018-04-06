@@ -12,8 +12,24 @@
   right:    0;
   bottom:   0;
   margin: 50px;
-}
+}*/
 #analyseDiet a {
   color: white;
   text-decoration: none;
-} */
+} 
+
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+.container {
+  min-height:100%;
+  position:relative;
+}
+footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  /* height:60px;   Height of the footer */
+}
