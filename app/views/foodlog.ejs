@@ -9,33 +9,28 @@
     <!-- left hand side of page column-->
     <div class="column">
       <div class="container">
-        <div class="tab-content">
-          <div id="Search" class="tab-pane fade in active">
-            <h3>Search</h3>
-            <div class="wrap">
-              <form class="form-inline" action="/foodlog" method="POST">
-                <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
-                <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+          <h3>Search</h3>
+            <form class="form-inline" action="/foodlog" method="POST">
+              <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
+              <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+            </form>
+            <% foodType.forEach(function(foodType, measurement){ %>
+              <form id="resultsForm" action="/foodlog:submitted" method="GET">
+                <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+                <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
+                <input name="quantity" type="text" placeholder="Enter Quantity...">
+                <div class="dropdown">
+                  <select name="measurement">Measurement
+                    <% measures.forEach(function(measurement){%>
+                    <div class="dropdown-content">
+                        <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
+                      <%  }); %>
+                    </div>
+                  </select>
+                </div>
+                <input type="submit">
               </form>
-              <% foodType.forEach(function(foodType, measurement){ %>
-                <form id="resultsForm" action="/foodlog:submitted" method="GET">
-                  <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
-                  <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-                  <input name="quantity" type="text" placeholder="Enter Quantity...">
-                  <div class="dropdown">
-                    <select name="measurement">Measurement
-                      <% measures.forEach(function(measurement){%>
-                      <div class="dropdown-content">
-                          <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
-                        <%  }); %>
-                      </div>
-                    </select>
-                  </div>
-                  <input type="submit">
-                </form>
-              <%  }); %>
-            </div>
-        </div>
+          <%  }); %>
       </div>
     </div>  
   </div>
