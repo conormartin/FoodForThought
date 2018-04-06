@@ -3,10 +3,15 @@
 }
 
 /* Create two equal columns that floats next to each other */
-.column {
+.column1 {
     float: left;
     width: 50%;
     padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 50%;
+  padding: 10px;
 }
 
 /* Clear floats after the columns */
@@ -56,15 +61,7 @@ body{
   cursor: pointer;
   font-size: 30px;
 }
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  position: absolute;
-}
-
 /*from cs230 assignmen 2*/
-
 h2{
   font-family: Arial, sans-serif;
 }
@@ -72,7 +69,6 @@ h2{
 .rt {
   border-collapse:collapse;
   border-spacing:0
-
 }
 
 div td {
@@ -112,31 +108,7 @@ div td {
   text-align:center;
   vertical-align:top;
 }
-
-/*final grade for each student */
-.rt .rt-d {
-  font-family:Arial, Helvetica, sans-serif !important;
-  text-align:right;
-  vertical-align:top;
-}
-
-
-/*each students assignments */
-.rt .rt-c {
-  font-family:Arial, Helvetica, sans-serif !important;
-  text-align:right;
-  vertical-align:top;
-}
-
-
 /*for buttons */
-button {
-  font-family: Arial, sans-serif;
-  border-radius: 20px;
-  background-color: lightblue;
-  display: inline-block;
-}
-
 #analyseDiet {
   position: absolute;
   right:    0;

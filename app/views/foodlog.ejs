@@ -7,7 +7,7 @@
 
   <div class="row">
     <!-- left hand side of page column-->
-    <div class="column">
+    <div class="column1">
       <div class="container">
           <h3>Search</h3>
             <form class="form-inline" action="/foodlog" method="POST">
@@ -37,39 +37,41 @@
   <!--end left column-->
 
   <!--right hand side of the page column-->
-  <div class="column" >
-  <!--start of form for logging food-->
-    <div id=foodInput>
-      <h1 align="center">Diary</h1>
-      <table id="resultsTable" align="center" class="rt" >
-        <tr>
-          <th class="rt-a">Food</th>
-          <th class="rt-a">Quantity</th>
-          <th class="rt-a">Calories</th>
-          <th class="rt-a">Protein</th>
-          <th class="rt-a">Fat</th>
-        </tr>
-        <% var i=0; %>
-        <% loggedFood.forEach(function(loggedFood){%>
+  <div class="column2" >
+    <div class="container">
+    <!--start of form for logging food-->
+      <div id=foodInput>
+        <h1 align="center">Diary</h1>
+        <table id="resultsTable" align="center" class="rt" >
           <tr>
-            <td class="b"><%= loggedFood %></td>
-            <% if (typeof loggedQuantity != 'undefined') { %>
-              <td class="b"><%= loggedQuantity[i] %></td>
-              <% i++; %>
-            <% } %>
-            <td class="b">-</td>
-            <td class="b">-</td>
-            <td class="b">-</td>
+            <th class="rt-a">Food</th>
+            <th class="rt-a">Quantity</th>
+            <th class="rt-a">Calories</th>
+            <th class="rt-a">Protein</th>
+            <th class="rt-a">Fat</th>
           </tr>
-        <%  }); %>
-      </table>
+          <% var i=0; %>
+          <% loggedFood.forEach(function(loggedFood){%>
+            <tr>
+              <td class="b"><%= loggedFood %></td>
+              <% if (typeof loggedQuantity != 'undefined') { %>
+                <td class="b"><%= loggedQuantity[i] %></td>
+                <% i++; %>
+              <% } %>
+              <td class="b">-</td>
+              <td class="b">-</td>
+              <td class="b">-</td>
+            </tr>
+          <%  }); %>
+        </table>
+      </div>
+    <!--end of food logging form-->
+    </div>
+    <!--end right column-->
+      <form>
+          <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
+      </form>
   </div>
-  <!--end of food logging form-->
-  </div>
-  <!--end right column-->
-  <form>
-      <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
-  </form>
 
 
   <% include partials/footer.ejs %>
