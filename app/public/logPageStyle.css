@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 /* Create two equal columns that floats next to each other */
 .column1 {
     float: left;
@@ -14,7 +10,7 @@
   padding: 10px;
 }
 
-.searchTerm {
+/* .searchTerm {
   float: left;
   width: 50%;
   border: 3px solid #008b8b;
@@ -41,7 +37,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
-}
+} */
 /*from cs230 assignmen 2*/
 .rt {
   border-collapse:collapse;
@@ -49,7 +45,11 @@
 }
 
 #foodInput {
-  float: right;
+  align-content: center;
+}
+
+.container {
+  align-content: center;
 }
 
 .rt td {
