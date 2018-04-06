@@ -1,4 +1,9 @@
 /* Create two equal columns that floats next to each other */
+body {
+  background-image: "img/veg.png";
+  
+}
+
 .col1 {
     float: left;
     width: 50%;
