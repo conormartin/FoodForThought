@@ -1,0 +1,5 @@
+cd /Users/conormartin/Documents/GitHub/FoodForThought/
+git add .
+git commit -m"update"
+git push
+ssh vmuser@167.99.94.137 bash -i /home/vmuser/FoodForThought/restart.sh
