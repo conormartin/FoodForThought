@@ -43,7 +43,7 @@ table td {
 
 table th {
   border-bottom: 1px solid lightgrey;
-  background-color: #374348;
+  background-color: rgb(25,145,145);
   color: white;
   text-align: center;
   padding: 15px;
