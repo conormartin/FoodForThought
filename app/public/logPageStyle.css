@@ -15,11 +15,11 @@
 }
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
@@ -35,7 +35,7 @@ body{
 
 .searchTerm {
   float: left;
-  width: 100%;
+  width: 50%;
   border: 3px solid #008b8b;
   padding: 5px;
   height: 36px;
