@@ -15,7 +15,8 @@ body {
 
 .container {
   background-color: white;
-  margin: 0 50px;
+  margin: 0 30px;
+  opacity: 0.2;
 }
 
 #analyseDiet {

@@ -11,6 +11,7 @@ html, body {
 
 .navbar {
   padding: .8rem;
+  background-color: white;
 
 }
 .navbar-nav {
