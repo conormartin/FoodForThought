@@ -2,11 +2,16 @@ body {
   background-image: url("img/healthy.png");
 }
 
+h2 {
+  background-color: white;
+}
+
 #nutritionTable{
   margin: 0 auto;
   font-size: 20px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 200px;
+  background-color: white;
 }
 
 #nutritionTable td {
