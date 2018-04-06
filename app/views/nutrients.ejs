@@ -14,13 +14,15 @@
 </head>
 
 <body>
- <% include partials/header.ejs %>
+ <% include partials/navbar.ejs %>
 
   <div>
       <% nutrients.forEach(function(nutrients){ %>
           <li><%- JSON.stringify(nutrients) %>
       <% }); %>
   </div> -->
+
+  <% include partials/footer.ejs %>
 </body>
 </html>
     

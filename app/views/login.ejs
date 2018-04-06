@@ -12,36 +12,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="img/logo9.png"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-  <ul class="navbar-nav ml-auto"> <!---pushes navigation to the right hand side-->
-
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Blog</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Diary</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Contact us</a>
-    </li>
-  </ul>
-</div>
-</div>
-</nav>
-
+<% include partials/navbar.ejs %>
 
 <div class="modal-dialog text-center">
 <div class="col-sm-8 main-section">
@@ -81,7 +52,7 @@
   </div>
 
 
-</div> <!--- End of Modal Content --->
+</div> <!--- End of Modal Content -->
 
 </div>
 
@@ -121,6 +92,8 @@
     }
 
 </script>
+
+<% include partials/footer.ejs %>
 </body>
 </html>
 

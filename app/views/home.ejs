@@ -13,36 +13,7 @@
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light sticky-top">
-<div class="container-fluid">
-	<a class="navbar-brand" href="index.html"><img src="img/logo9.png"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto"> <!---pushes navigation to the right hand side-->
-
-            <li class="nav-item active">
-            <a class="nav-link" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/blog">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/diary">Diary</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact us</a>
-            </li>
-        </ul>
-    </div>
-</div>
-</nav>
+<% include partials/navbar.ejs %>
 
 <!--- Image Slider -->
 
@@ -295,68 +266,7 @@
     </div>
 </div>
 
-<!--- Footer -->
-
-<footer>
-    <div class="container-fluid padding">
-
-
-        <div class="row text-center">
-            <div class="col-md-4">
-
-                <img src="img/logo9.png">
-                <hr class="light">
-                <p>01-8080028</p>
-                <p>irelandfoodforthought@gmail.com</p>
-                <p>Dublin, Ireland</p>
-            </div>
-
-            <div class="col-md-4">
-              <hr class="light">
-                <h5>Our hours</h5>
-                <hr class="light">
-                <p>Monday: 9am - 5pm</p>
-                <p>Saturday: 10am - 4pm</p>
-                <p>Sunday Closed</p>
-
-
-
-
-        </div>
-            <div class="col-md-4">
-
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Diary</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact us</a>
-                </li>
-
-                </ul>
-
-
-            </div>
-            <div class="col-12">
-
-                <hr class="light">
-                <h5>&copyFoodforthought</h5>
-            </div>
-
-
-    </div>
-    </div>
-</footer>
-
+<% include partials/footer.ejs %>
 
 </body>
 </html>

@@ -53,7 +53,7 @@ app.get("/search", function(req, res) {
 
 // on /search results page, user selects which food they want, quantity and measurement, this is sent in json as a post request
 ///nutrients page displays nutritional breakdown of the selected food
-app.get("/Nutrients", function(req, res) {
+app.get("/nutrients", function(req, res) {
     //json object containing info on food type & quantity
     var quantity = req.query.quantity.replace(/['"]+/g, '');
     var measurement = req.query.measurement.replace(/['"]+/g, '');
@@ -179,7 +179,7 @@ app.get("/dietbreakdown", function(req, res){
 
 
 //shows contact page (empty)
-app.get("/ContactUs", function(req, res){
+app.get("/contact", function(req, res){
     res.render("contact");
 });
 
