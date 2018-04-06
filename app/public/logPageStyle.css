@@ -1,6 +1,7 @@
 /* Create two equal columns that floats next to each other */
 body {
   background-image: url("img/choppingboard.jpg");
+  background-size: 100% 100%; 
 }
 
 .col1 {
