@@ -1,7 +1,7 @@
 /* Create two equal columns that floats next to each other */
 body {
-  background-image: "img/veg.png";
-  
+  background-image: url("img/veg.png");
+
 }
 
 .col1 {
