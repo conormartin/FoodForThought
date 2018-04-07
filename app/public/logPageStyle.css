@@ -15,8 +15,8 @@ h2 {
   background: linear-gradient(to right, 
                               transparent 0%, 
                               transparent calc(50% - 0.81px), 
-                              black calc(50% - 0.8px), 
-                              black calc(50% + 0.8px), 
+                              rgb(128, 128, 128) calc(50% - 0.8px), 
+                              rgb(128, 128, 128) calc(50% + 0.8px), 
                               transparent calc(50% + 0.81px), 
                               transparent 100%); 
 }
