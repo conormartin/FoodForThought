@@ -38,10 +38,12 @@ app.get("/search", function(req, res) {
         var foodType = [];
         var measurement = [];
         for(var i=0; i<body.hints.length; i++){
-            foodType.push(body.hints[i].food.replace(/['"]+/g, ''));
+            var food = body.hints[i].food.replace(/['"]+/g, '');
+            foodType.push(food);
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
-            measurement.push(body.hints[0].measures[i].replace(/['"]+/g, ''));
+            var measure = body.hints[0].measures[i].replace(/['"]+/g, '');
+            measurement.push(measure);
         }
         res.render("searchResults", {result: foodType, measures: measurement});
     }
@@ -129,7 +131,7 @@ app.post("/foodlog", function(req,res) {
             foodType.push(body.hints[i].food);
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
-            measurement.push(body.hints[0].measures[i].replace(/['"]+/g, ''));
+            measurement.push(body.hints[0].measures[i]);
         }
         res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
     });
