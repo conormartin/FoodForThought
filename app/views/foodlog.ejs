@@ -15,7 +15,7 @@
           <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
             <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-            <input class="result" name="quantity" type="text" placeholder="Amount" style="width:fit">
+            <input class="result" name="quantity" type="text" placeholder="Amount" style="width:75px">
             <div class="result">
               <select class="selectpicker" name="measurement">Measurement
                 <option selected disabled> Measure </option>

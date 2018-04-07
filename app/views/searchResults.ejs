@@ -10,7 +10,7 @@
         <% result.forEach(function(foodType, measurement){ %>
                 <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
                     <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.uri)%>'><%- JSON.stringify(foodType.label) %>
-                    <input name="quantity" type="text" style="width:fit" placeholder="Enter Quantity...">
+                    <input name="quantity" type="text" style="width:75px" placeholder="Quantity">
                         <select class="selectpicker" name="measurement">Measurement
                             <option selected disabled> Measure </option>
                             <% measures.forEach(function(measurement){%>
