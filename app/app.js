@@ -39,6 +39,7 @@ app.get("/search", function(req, res) {
         var measurement = [];
         for(var i=0; i<body.hints.length; i++){
             foodType.push(body.hints[i].food);
+            console.log(body.hints[i].food);
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
             measurement.push(body.hints[0].measures[i]);
