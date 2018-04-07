@@ -9,12 +9,12 @@
     <div>
         <% result.forEach(function(foodType, measurement){ %>
                 <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
-                    <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.uri)%>'><%- JSON.stringify(foodType.label) %>
+                    <input type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
                     <input name="quantity" type="text" placeholder="Quantity">
                         <select id="inputState" class="form-control" name="measurement">Measurement
                             <option selected disabled> Measure </option>
                             <% measures.forEach(function(measurement){%>
-                                <option value= '<%-JSON.stringify(measurement.uri)%>'> <%-JSON.stringify(measurement.label)%> </option>
+                                <option value= '<%-measurement.uri%>'> <%- measurement.label %> </option>
                             <%  }); %>
                         </select>
                     <input class="btn btn-default btn-primary" type="submit">
