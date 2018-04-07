@@ -21,6 +21,11 @@ h2 {
                               transparent 100%); 
 }
 
+#resultsForm {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .col1 {
     float: left;
     width: 50%;
