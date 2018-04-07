@@ -54,24 +54,13 @@ h2 {
   text-decoration: none;
 } 
 
-/* table {
+table {
   margin: 0 auto;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
-  margin-bottom: 200px;
   background-color: white;
 }
 
-table td {
-  padding: 10px;
-  border-right: 1px solid lightgrey;
-}
-
 table th {
-  border-bottom: 1px solid lightgrey;
   background-color: rgb(25,145,145);
-  color: white;
-  text-align: center;
-  padding: 15px;
 }
 
 th:nth-child(n+2), td:nth-child(n+2) {
@@ -80,4 +69,4 @@ th:nth-child(n+2), td:nth-child(n+2) {
 
 tr:nth-child(odd) {
   background-color: rgb(245, 241, 241);
-} */
+}

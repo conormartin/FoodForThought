@@ -13,14 +13,14 @@
         </form>
         <% foodType.forEach(function(foodType, measurement){ %>
           <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
-            <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+            <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label.replace(/['"]+/g, '')) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
             <input class="form-control mr-sm-2 result" name="quantity" type="text" placeholder="Amount" style="width:90px">
             <div class="result">
               <select id="inputState" class="form-control" name="measurement">Measurement
                 <option selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
-                    <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
+                    <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label.replace(/['"]+/g, ''))%>
                   <%  }); %>
               </select>
             </div>
