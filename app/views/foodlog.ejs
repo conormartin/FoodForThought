@@ -15,7 +15,7 @@
           <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
             <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-            <input class="form-control mr-sm-2 result" name="quantity" type="text" placeholder="Amount" style="width:75px">
+            <input class="form-control mr-sm-2 result" name="quantity" type="text" placeholder="Amount" style="width:fit">
             <div class="result">
               <select id="inputState" class="form-control" name="measurement">Measurement
                 <option selected disabled> Measure </option>
@@ -24,7 +24,7 @@
                   <%  }); %>
               </select>
             </div>
-            <input class="btn btn-primary result" type="submit">
+            <input class="btn btn-primary result" type="submit" style="float:right">
           </form>
       <%  }); %>
     </div>  
