@@ -38,10 +38,10 @@ app.get("/search", function(req, res) {
         var foodType = [];
         var measurement = [];
         for(var i=0; i<body.hints.length; i++){
-            foodType.push(body.hints[i].food);
+            foodType.push(body.hints[i].food.replace(/['"]+/g, ''));
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
-            measurement.push(body.hints[0].measures[i]);
+            measurement.push(body.hints[0].measures[i].replace(/['"]+/g, ''));
         }
         res.render("searchResults", {result: foodType, measures: measurement});
     }
@@ -129,7 +129,7 @@ app.post("/foodlog", function(req,res) {
             foodType.push(body.hints[i].food);
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
-            measurement.push(body.hints[0].measures[i]);
+            measurement.push(body.hints[0].measures[i].replace(/['"]+/g, ''));
         }
         res.render("foodlog", {foodType: foodType, measures: measurement, loggedFood:loggedFood});
     });
