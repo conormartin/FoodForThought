@@ -85,7 +85,6 @@ app.get("/nutrients", function(req, res) {
             var value = nutrients[name];
             label.push(value.label);
             var quantityUnrounded = value.quantity;
-            console.log(Math.round(quantityUnrounded * 100) / 100+value.unit);
             quantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
         }
         res.render("nutrients", {label:label, quantity:quantity});
