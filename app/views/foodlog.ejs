@@ -34,14 +34,17 @@
     <div class="col2">
     <!--start of form for logging food-->
       <h2>Diary</h2>
-      <table>
+      <table class="table table hover">
+        <thead class="thead-dark">
         <tr>
-          <th>Food</th>
-          <th>Quantity</th>
-          <th>Calories</th>
-          <th>Protein</th>
-          <th>Fat</th>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Calories</th>
+          <th scope="col">Protein</th>
+          <th scope="col">Fat</th>
         </tr>
+        </thead>
+        <tbody>
         <% var i=0; %>
         <% loggedFood.forEach(function(loggedFood){%>
           <tr>
@@ -55,6 +58,7 @@
             <td>-</td>
           </tr>
         <%  }); %>
+       </tbody>
       </table>
       <!--end of food logging form-->
       <form>

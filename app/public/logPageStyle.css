@@ -54,7 +54,7 @@ h2 {
   text-decoration: none;
 } 
 
-table {
+/* table {
   margin: 0 auto;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 200px;
@@ -80,4 +80,4 @@ th:nth-child(n+2), td:nth-child(n+2) {
 
 tr:nth-child(odd) {
   background-color: rgb(245, 241, 241);
-}
+} */
