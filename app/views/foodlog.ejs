@@ -15,15 +15,13 @@
           <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
             <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-            <input class="result" name="quantity" type="text" placeholder="Amount" style="width:75px">
+            <input class="result" name="quantity" type="text" placeholder="Amount" style="width:fit">
             <div class="result" class="dropdown">
-              <select class="dropbtn" name="measurement">Measurement
-              <div class="dropdown-content">
+              <select class="selectpicker" name="measurement">Measurement
                 <option class="dropdown dropdown-content" selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
                     <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
                   <%  }); %>
-              </div>
               </select>
             </div>
             <input class="result" type="submit" class="btn btn-default btn-primary">
