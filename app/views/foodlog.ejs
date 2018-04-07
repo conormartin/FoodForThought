@@ -13,10 +13,10 @@
         </form>
         <% foodType.forEach(function(foodType, measurement){ %>
           <form id="resultsForm" action="/foodlog:submitted" method="GET">
-            <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
-            <input type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
-            <input name="quantity" type="text" placeholder="Amount" style="width:75px">
-            <div class="dropdown">
+            <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
+            <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
+            <input class="result" name="quantity" type="text" placeholder="Amount" style="width:75px">
+            <div class="result" class="dropdown">
               <select class="dropbtn" name="measurement">Measurement
               <div class="dropdown-content">
                 <% measures.forEach(function(measurement){%>
@@ -25,7 +25,7 @@
               </div>
               </select>
             </div>
-            <input type="submit" class="btn btn-default btn-primary">
+            <input class="result" type="submit" class="btn btn-default btn-primary">
           </form>
       <%  }); %>
     </div>  
