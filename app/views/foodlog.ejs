@@ -12,7 +12,7 @@
           <button type="submit" class="btn btn-lg btn-primary searchButton">Search</i></button>
         </form>
         <% foodType.forEach(function(foodType, measurement){ %>
-          <form id="resultsForm" action="/foodlog:submitted" method="GET">
+          <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
             <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
             <input class="result" name="quantity" type="text" placeholder="Amount" style="width:75px">
