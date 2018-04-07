@@ -9,10 +9,21 @@ h2 {
   margin: 20px;
 }
 
+.line-in-middle {
+  width:400px;
+  height:200px;
+  background: linear-gradient(to right, 
+                              transparent 0%, 
+                              transparent calc(50% - 0.81px), 
+                              black calc(50% - 0.8px), 
+                              black calc(50% + 0.8px), 
+                              transparent calc(50% + 0.81px), 
+                              transparent 100%); 
+}
+
 .col1 {
     float: left;
     width: 50%;
-    border-right: thick solid #dcdddd67;;
 }
 .col2 {
   float: right;
@@ -23,6 +34,7 @@ h2 {
   background-color: white;
   margin: 0 30px;
   opacity: 0.92;
+  border-right: thick solid #dcdddd67;;
 }
 
 #analyseDiet {
