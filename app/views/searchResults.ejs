@@ -8,7 +8,7 @@
 <div id="searchResultsList">
     <div>
         <% result.forEach(function(foodType, measurement){ %>
-                <form id="resultsForm" action="/nutrients" method="GET">
+                <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
                     <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.uri)%>'><%- JSON.stringify(foodType.label) %>
                     <input name="quantity" type="text" placeholder="Enter Quantity...">
                     <div class="dropdown" >
