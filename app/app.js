@@ -82,9 +82,11 @@ app.get("/nutrients", function(req, res) {
         for (var j=0; j<allPropertyNames.length; j++) {
             var name = allPropertyNames[j];
             var value = nutrients[name];
-            x[j] = value.label + ": " + value.quantity + value.unit;
+            var label = value.label 
+            var quantityUnrounded = value.quantity
+            var quantity = (Math.round(quantityUnrounded * 100) / 100)+value.unit;
         }
-        res.render("nutrients", {nutrients:x});
+        res.render("nutrients", {label:label, quantity:quantity});
     })
 });
 
