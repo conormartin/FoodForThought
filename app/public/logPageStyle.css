@@ -4,6 +4,11 @@ body {
   background-size: 100% 100%; 
 }
 
+h3 {
+  text-align: center;
+  margin: 20px;
+}
+
 .col1 {
     float: left;
     width: 50%;
