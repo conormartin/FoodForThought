@@ -38,12 +38,10 @@ app.get("/search", function(req, res) {
         var foodType = [];
         var measurement = [];
         for(var i=0; i<body.hints.length; i++){
-            var food = body.hints[i].food.replace(/['"]+/g, '');
-            foodType.push(food);
+            foodType.push(body.hints[i].food);
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
-            var measure = body.hints[0].measures[i].replace(/['"]+/g, '');
-            measurement.push(measure);
+            measurement.push(body.hints[0].measures[i]);
         }
         res.render("searchResults", {result: foodType, measures: measurement});
     }
