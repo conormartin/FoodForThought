@@ -16,15 +16,15 @@
             <input class="result" type="hidden" name="foodType" value='<%-JSON.stringify(foodType.label)%>'><%- JSON.stringify(foodType.label) %>
             <input class="result" type="hidden" name="foodUrl" value='<%-JSON.stringify(foodType.uri)%>'>
             <input class="result" name="quantity" type="text" placeholder="Amount" style="width:fit">
-            <div class="result" class="dropdown">
+            <div class="result">
               <select class="selectpicker" name="measurement">Measurement
-                <option class="dropdown dropdown-content" selected disabled> Measure </option>
+                <option selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
                     <option value= '<%-JSON.stringify(measurement.uri)%>' ><%-JSON.stringify(measurement.label)%>
                   <%  }); %>
               </select>
             </div>
-            <input class="result" type="submit" class="btn btn-default btn-primary">
+            <input class="result" type="submit" class="btn btn-primary">
           </form>
       <%  }); %>
     </div>  

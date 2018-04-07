@@ -12,9 +12,9 @@
                     <input type="hidden" name="foodType" value='<%-JSON.stringify(foodType.uri)%>'><%- JSON.stringify(foodType.label) %>
                     <input name="quantity" type="text" style="width:fit" placeholder="Enter Quantity...">
                         <select class="selectpicker" name="measurement">Measurement
-                            <option class="dropdown dropdown-content" selected disabled> Measure </option>
+                            <option selected disabled> Measure </option>
                             <% measures.forEach(function(measurement){%>
-                                <option class="dropdown dropdown-content" value= '<%-JSON.stringify(measurement.uri)%>'> <%-JSON.stringify(measurement.label)%> </option>
+                                <option value= '<%-JSON.stringify(measurement.uri)%>'> <%-JSON.stringify(measurement.label)%> </option>
                             <%  }); %>
                         </select>
                     <input class="btn btn-default btn-primary" type="submit">
