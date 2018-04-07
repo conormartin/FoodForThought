@@ -78,14 +78,13 @@ app.get("/nutrients", function(req, res) {
 
         // from stackoverflow...??? splits json to only show text
         var label = [];
-        var quantityUnrounded = [];
         var quantity = [];
         var allPropertyNames = Object.keys(nutrients);
         for (var j=0; j<allPropertyNames.length; j++) {
             var name = allPropertyNames[j];
             var value = nutrients[name];
             label.push(value.label);
-            quantityUnrounded.push(value.quantity);
+            var quantityUnrounded = value.quantity;
             quantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
         }
         res.render("nutrients", {label:label, quantity:quantity});
