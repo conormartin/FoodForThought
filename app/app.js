@@ -176,13 +176,14 @@ app.get("/foodlog:submitted", function(req,res) {
         calories = body.calories;
         fat = body.totalNutrients.FAT.quantity;
         protein = body.totalNutrients.PROCNT.quantity;
+        console.log(calories+"1");
+        console.log(fat+"2");
+    
+        loggedFood.push(food);
+        loggedQuantity.push(quantity);
+        res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});
+    
     });
-    console.log(calories+"1");
-    console.log(fat+"2");
-
-    loggedFood.push(food);
-    loggedQuantity.push(quantity);
-    res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});
 });
 
 
