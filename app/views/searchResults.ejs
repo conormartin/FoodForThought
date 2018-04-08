@@ -3,10 +3,10 @@
 <body id="searchResults">
 <% include partials/navbar.ejs %>
 
-<h2 style="background-color:white">Search Results</h2>
+<h2>Search Results</h2>
 
 <div id="searchResultsList">
-    <div class="container" style="background-color:white">
+    <div class="container">
         <% result.forEach(function(foodType, measurement){ %>
         <form id="resultsForm" action="/nutrients" method="GET">
             <div class="form-row align-items-center">
@@ -27,6 +27,7 @@
                 <div class="col">
                     <input class="btn btn-primary mb-2" type="submit">
                 </div>
+                <hr>
             </div> 
         </form>
         <%  }); %>
