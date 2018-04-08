@@ -169,7 +169,8 @@ app.get("/foodlog:submitted", function(req,res) {
     }, function (error, response, body){
         var nutrients = body.totalNutrients;
         var quantity = [];
-        calories.push(body.calories);
+        var cal = body.calories;
+        calories.push(cal);
         var unroundedFat = body.totalNutrients.FAT.quantity;
         fat.push(Math.round(unroundedFat * 100) / 100);
         var unroundedProtein = body.totalNutrients.PROCNT.quantity
