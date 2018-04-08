@@ -235,6 +235,9 @@ figure {
 #nutrientsPage {
   background-image: url('img/veg.png');
 }
+#nutrientsTable {
+  background-color: white;
+}
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
