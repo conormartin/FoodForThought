@@ -176,6 +176,7 @@ app.get("/foodlog:submitted", function(req,res) {
         calories = body.calories;
         console.log(calories);
         fat = body.totalNutrients.FAT.quantity;
+        console.log(fat);
         protein = body.totalNutrients.PROCNT.quantity;
     });
         
