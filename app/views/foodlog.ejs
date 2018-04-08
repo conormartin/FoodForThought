@@ -20,10 +20,10 @@
               <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
               <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
             </div>
-            <div class="col">
+            <div class="col-2">
               <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:90px">
             </div>
-            <div class="col result">
+            <div class="col-2 result">
               <select id="inputState" class="form-control" name="measurement" style="width:120px">Measurement
                 <option selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
