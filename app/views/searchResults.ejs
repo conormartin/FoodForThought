@@ -10,7 +10,7 @@
     <% result.forEach(function(foodType, measurement){ %>
     <form id="resultsForm" action="/nutrients" method="GET">
         <div class="form-row align-items-center">
-            <div class="col">
+            <div class="col-auto">
                 <input class="form-control" type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
             </div>
             <div class="col-sm-2 my-1">
@@ -24,7 +24,7 @@
                     <%  }); %>
                 </select>
             </div>
-            <div class="col">
+            <div class="col-auto">
                 <input class="btn btn-primary mb-2" type="submit">
             </div>
         </div> 
