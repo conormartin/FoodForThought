@@ -4,10 +4,11 @@
 
 body{
   background-image:url('img/bg.jpeg');
+  background-size: 100% 100%;
   color:#5d5f5e;
   line-height:1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* padding:1em; */
+  padding:1em;
 }
 
 /* .container{
