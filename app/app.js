@@ -162,7 +162,7 @@ app.get("/foodlog:submitted", function(req,res) {
             "foodURI": foodUrl
         }]
     };
-    var caloriesUnrounded;
+    var calories;
     var fat;
     var protein;
     request({
@@ -173,18 +173,10 @@ app.get("/foodlog:submitted", function(req,res) {
     }, function (error, response, body){
         var nutrients = body.totalNutrients;
         var quantity = [];
-        caloriesUnrounded = body.totalNutrients.ENERC_KCAL.quantity;
-        calories = Math.round(caloriesUnrounded * 100) / 100;
+        calories = body.calories;
         console.log(calories);
         fat = body.totalNutrients.FAT.quantity;
         protein = body.totalNutrients.PROCNT.quantity;
-        // var allPropertyNames = Object.keys(nutrients);
-        // for (var j=0; j<allPropertyNames.length; j++) {
-        //     var name = allPropertyNames[j];
-        //     var value = nutrients[name];
-        //     var quantityUnrounded = value.quantity;
-        //     quantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
-        // }
     });
         
     loggedFood.push(food);
