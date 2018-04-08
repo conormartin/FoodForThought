@@ -15,10 +15,10 @@
         <% function(label,quantity){ %>
             <% for(var i=0; i<label.length; i++) { %>
             <tr>
-              <td><%- label %></td>
-              <td><%- quantity %></td>
+              <td><%= label %></td>
+              <td><%= quantity %></td>
              </tr>
-        <% }); %>
+        <% }; %>
     <% }); %>
     </tbody>
     </table>
