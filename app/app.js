@@ -169,22 +169,22 @@ app.get("/foodlog:submitted", function(req,res) {
         body: foodJson
     }, function (error, response, body){
         var nutrients = body.totalNutrients;
-        // var label = [];
-        // var quantity = [];
-        var allPropertyNames = Object.keys(nutrients);
-        for (var j=0; j<allPropertyNames.length; j++) {
-            var name = allPropertyNames[j];
-            var value = nutrients[name];
-            // label.push(value.label);
-            var quantityUnrounded = value.quantity;
-            loggedQuantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
-            console.log(loggedQuantity);
-        };
+        var quantity = [];
+        var calories = body.totalNutrients.ENERC_KCAL.quantity;
+        var fat = body.totalNutrients.FAT.quantity;
+        var protein = body.totalNutrients.PROCNT.quantity;
+        // var allPropertyNames = Object.keys(nutrients);
+        // for (var j=0; j<allPropertyNames.length; j++) {
+        //     var name = allPropertyNames[j];
+        //     var value = nutrients[name];
+        //     var quantityUnrounded = value.quantity;
+        //     quantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
+        // }
     });
         
     loggedFood.push(food);
-    // loggedQuantity.push(quantity);
-    res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity});
+    loggedQuantity.push(quantity);
+    res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});
 });
 
 
