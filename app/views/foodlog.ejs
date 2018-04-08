@@ -17,14 +17,14 @@
         <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
           <div class="form-row align-items-center">
             <div class="col-sm-4">
-              <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
-              <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
+              <input class="form-control result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
+              <input class="form-control result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
             </div>
             <div>
-              <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:75px">
+              <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:90px">
             </div>
-            <div class="col-auto result">
-              <select id="inputState" class="form-control" name="measurement">Measurement
+            <div class="result">
+              <select id="inputState" class="form-control" name="measurement" style="width:90px">Measurement
                 <option selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
                     <option value= '<%-measurement.uri%>' ><%-measurement.label%>
