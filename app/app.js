@@ -165,6 +165,8 @@ app.get("/foodlog:submitted", function(req,res) {
     var calories;
     var fat;
     var protein;
+    loggedFood.push(food);
+    loggedQuantity.push(quantity);
     request({
         url: "https://api.edamam.com/api/food-database/nutrients?app_id=2833224e&app_key=f49370b187bbd05209a7472b217a70d7",
         method: "POST",
@@ -176,13 +178,8 @@ app.get("/foodlog:submitted", function(req,res) {
         calories = body.calories;
         fat = body.totalNutrients.FAT.quantity;
         protein = body.totalNutrients.PROCNT.quantity;
-        console.log(calories+"1");
-        console.log(fat+"2");
-    
-        loggedFood.push(food);
-        loggedQuantity.push(quantity);
-        res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});
-    
+
+        res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});    
     });
 });
 
