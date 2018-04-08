@@ -6,6 +6,10 @@ html, body {
   font-family: 'Poppins' , sans-serif;
   color: #222;
 }
+#searchBar {
+  width: 0.5em;
+}
+
 .navbar {
   padding: .8rem;
   background-color: white;
