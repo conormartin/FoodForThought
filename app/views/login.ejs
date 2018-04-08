@@ -5,85 +5,86 @@
 <body>
 <% include partials/navbar.ejs %>
 
-<div class="modal-dialog text-center">
-<div class="col-sm-8 main-section">
-<div class="modal-content">
-<div class="col-12 user-image">
-  <img src="img/login1.png">
-
-</div>
-  <form class="col-12">
-<div class="form-group">
-
-  <input type="text" class = "form-control" placeholder="Username">
-
-</div>
-
+<div class="container">
+    
+    <div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+    <div class="modal-content">
+    <div class="col-12 user-image">
+        <img src="img/login1.png">
+    </div>
+    <form class="col-12">
     <div class="form-group">
 
-      <input type="password" class = "form-control" placeholder="Password">
+    <input type="text" class = "form-control" placeholder="Username">
+
+    </div>
+
+        <div class="form-group">
+
+        <input type="password" class = "form-control" placeholder="Password">
+
+        </div>
+
+
+        <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
+
+        <div>
+
+            <button onclick={signInWithGoogle()} class="loginBtn loginBtn--google">Login with Google</button>
+
+        </div>
+
+
+    </form>
+
+    <div class="col-12 forgot">
+        <a href="#"> Forgot Password?</a>
 
     </div>
 
 
-    <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
+    </div> <!--- End of Modal Content -->
 
-      <div>
+    </div>
 
-          <button onclick={signInWithGoogle()} class="loginBtn loginBtn--google">Login with Google</button>
+    </div>
 
-      </div>
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"> </script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
+            authDomain: "fir-web-login-4c7f6.firebaseapp.com",
+            databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
+            projectId: "fir-web-login-4c7f6",
+            storageBucket: "",
+            messagingSenderId: "265197082111"
+        };
+        firebase.initializeApp(config);
+    </script>
 
+    <script src="index.js"></script>
 
-  </form>
+    <script>
 
-  <div class="col-12 forgot">
-    <a href="#"> Forgot Password?</a>
+        function signInWithGoogle(){
+        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
 
-  </div>
+            firebase.auth().signInWithPopup(googleAuthProvider)
+                .then( function(data){
 
+                console.log(data)
+            })
+                .catch( function(error) {
 
-</div> <!--- End of Modal Content -->
+            console.log(error)
+            })
 
+        }
+
+    </script>
 </div>
-
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"> </script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
-        authDomain: "fir-web-login-4c7f6.firebaseapp.com",
-        databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
-        projectId: "fir-web-login-4c7f6",
-        storageBucket: "",
-        messagingSenderId: "265197082111"
-    };
-    firebase.initializeApp(config);
-</script>
-
-<script src="index.js"></script>
-
-<script>
-
-    function signInWithGoogle(){
-    var googleAuthProvider = new firebase.auth.GoogleAuthProvider
-
-        firebase.auth().signInWithPopup(googleAuthProvider)
-            .then( function(data){
-
-            console.log(data)
-        })
-            .catch( function(error) {
-
-        console.log(error)
-        })
-
-    }
-
-</script>
-
 <% include partials/footer.ejs %>
 
 
