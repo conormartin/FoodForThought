@@ -8,12 +8,12 @@
 <div id="searchResultsList">
     <div class="container">
         <% result.forEach(function(foodType, measurement){ %>
-        <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
-            <div class="form-row">
+        <form id="resultsForm" action="/nutrients" method="GET">
+            <div class="form-row align-items-center">
                 <div class="col">
                     <input class="form-control" type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
                 </div>
-                <div class="col-sm-3 my-1">
+                <div class="col-sm-1 my-1">
                     <input class="form-control mb-2" name="quantity" type="text" placeholder="Quantity">
                 </div>
                 <div class="col-auto">
