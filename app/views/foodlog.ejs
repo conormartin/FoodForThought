@@ -13,23 +13,30 @@
         </form>
         <% foodType.forEach(function(foodType, measurement){ %>
           <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
-            <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
-            <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
-            <input class="form-control mr-sm-2 result" name="quantity" type="text" placeholder="Amount" style="width:90px">
-            <div class="result">
-              <select id="inputState" class="form-control" name="measurement">Measurement
-                <option selected disabled> Measure </option>
-                <% measures.forEach(function(measurement){%>
-                    <option value= '<%-measurement.uri%>' ><%-measurement.label%>
-                  <%  }); %>
-              </select>
+            <div class="form-row align-items-center">
+              <div class="col-sm-4">
+                <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
+                <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
+              </div>
+              <div class="col-sm-2 my-1">
+                <input class="form-control mr-sm-2 result" name="quantity" type="text" placeholder="Amount">
+              </div>
+              <div class="col-auto result">
+                <select id="inputState" class="form-control" name="measurement">Measurement
+                  <option selected disabled> Measure </option>
+                  <% measures.forEach(function(measurement){%>
+                      <option value= '<%-measurement.uri%>' ><%-measurement.label%>
+                    <%  }); %>
+                </select>
+              </div>
+              <div class="col-auto">
+                <input class="btn btn-primary result" type="submit">
+              </div>
             </div>
-            <input class="btn btn-primary result" type="submit">
           </form>
       <%  }); %>
     </div>  
     <!--end left column-->
-
     <!--right hand side of the page column-->
     <div class="col2">
       <div class="container">
