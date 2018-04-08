@@ -11,15 +11,13 @@
         <th scope="col">Quantity</th>
         </tr>
         </thead>
-        <tbody>
-        <% function(label,quantity){ %>
-            <% for(var i=0; i<label.length; i++) { %>
-            <tr>
-              <td><%= label %></td>
-              <td><%= quantity %></td>
-             </tr>
-        <% }; %>
-    <% }); %>
+    <tbody>
+        <% label.forEach(function(label,quantity){ %>
+        <tr>
+            <td><%- label %></td>
+            <td><%- quantity %></td>
+        </tr>
+      <% }); %>
     </tbody>
     </table>
   </div>
