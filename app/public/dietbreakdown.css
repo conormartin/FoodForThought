@@ -6,6 +6,11 @@ body {
 
 h2 {
   background-color: white;
+  padding: 25px;
+}
+
+.container {
+  background-color: white;
 }
 
 #nutritionTable{
