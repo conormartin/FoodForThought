@@ -1,7 +1,7 @@
 /* Create two equal columns thart floats next to each other */
 body {
   background-image: url("img/choppingboard.jpg");
-  /* background-size: 100% 100%;  */
+  background-size: 100%; 
 }
 
 h2 {
