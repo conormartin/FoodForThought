@@ -235,6 +235,9 @@ figure {
 #nutrientsPage {
   background-image: url('img/veg.png');
 }
+#searchResults {
+  background-image: url('img/veg.png');
+}
 #nutrientsTable {
   background-color: white;
 }
