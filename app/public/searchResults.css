@@ -4,6 +4,10 @@
   padding-left: 40px;
 }
 
+h2 {
+  padding: 25px;
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
