@@ -7,33 +7,35 @@
     <!-- left hand side of page column-->
     <div class="col1">
       <h2>Search</h2>
-        <form class="form-inline" action="/foodlog" method="POST">
-          <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
-          <button type="submit" class="btn btn-primary searchButton">Search</i></button>
-        </form>
-        <% foodType.forEach(function(foodType, measurement){ %>
-          <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
-            <div class="form-row align-items-center">
-              <div class="col-sm-4">
-                <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
-                <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
-              </div>
-              <div class="col-sm-2 my-1">
-                <input class="form-control result" name="quantity" type="text" placeholder="Amount">
-              </div>
-              <div class="col-auto result">
-                <select id="inputState" class="form-control" name="measurement">Measurement
-                  <option selected disabled> Measure </option>
-                  <% measures.forEach(function(measurement){%>
-                      <option value= '<%-measurement.uri%>' ><%-measurement.label%>
-                    <%  }); %>
-                </select>
-              </div>
-              <div class="col-auto">
-                <input class="btn btn-primary result" type="submit">
-              </div>
+      <hr>
+      <form class="form-inline" action="/foodlog" method="POST">
+        <input type="search" name="searchTerm" class="form-control mr-sm-2 searchTerm" placeholder="Search for food" aria-label="Search">
+        <button type="submit" class="btn btn-primary searchButton">Search</i></button>
+      </form>
+      <hr>
+      <% foodType.forEach(function(foodType, measurement){ %>
+        <form class="form-inline" id="resultsForm" action="/foodlog:submitted" method="GET">
+          <div class="form-row align-items-center">
+            <div class="col-sm-4">
+              <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
+              <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
             </div>
-          </form>
+            <div class="col-sm-1">
+              <input class="form-control result" name="quantity" type="text" placeholder="Amount">
+            </div>
+            <div class="col-auto result">
+              <select id="inputState" class="form-control" name="measurement">Measurement
+                <option selected disabled> Measure </option>
+                <% measures.forEach(function(measurement){%>
+                    <option value= '<%-measurement.uri%>' ><%-measurement.label%>
+                  <%  }); %>
+              </select>
+            </div>
+            <div class="col-auto">
+              <input class="btn btn-primary result" type="submit">
+            </div>
+          </div>
+        </form>
       <%  }); %>
     </div>  
     <!--end left column-->
@@ -42,6 +44,7 @@
       <div class="container">
       <!--start of form for logging food-->
         <h2>Diary</h2>
+        <hr>
         <table class="table table-hover">
           <thead>
           <tr>
@@ -69,6 +72,7 @@
           <%  }); %>
         </tbody>
         </table>
+        <hr>
         <!--end of food logging form-->
         <form>
           <button type="submit" id="analyseDiet" class="btn btn-lg btn-primary" ><a href="/dietbreakdown">Analyse Diet</a></button>
