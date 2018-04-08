@@ -8,17 +8,27 @@
 <div id="searchResultsList">
     <div class="container">
         <% result.forEach(function(foodType, measurement){ %>
-                <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
+        <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
+            <div class="form-row">
+                <div class="col">
                     <input class="form-control" type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
+                </div>
+                <div class="col">
                     <input class="form-control" name="quantity" type="text" placeholder="Quantity">
-                        <select id="inputState" class="form-control" name="measurement" style="width:100px">Measurement
-                            <option selected disabled> Measure </option>
-                            <% measures.forEach(function(measurement){%>
-                                <option value= '<%-measurement.uri%>'> <%- measurement.label %> </option>
-                            <%  }); %>
-                        </select>
-                    <input class="btn btn-primary mb-2" type="submit">
-                </form>
+                </div>
+                <div class="col">
+                    <select id="inputState" class="form-control" name="measurement">Measurement
+                        <option selected disabled> Measure </option>
+                        <% measures.forEach(function(measurement){%>
+                            <option value= '<%-measurement.uri%>'> <%- measurement.label %> </option>
+                        <%  }); %>
+                    </select>
+                </div>
+            </div> 
+            <div class="col">
+                <input class="btn btn-primary mb-2" type="submit">
+            </div>
+        </form>
         <%  }); %>
     </div>
 </div>
