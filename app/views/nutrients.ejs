@@ -14,10 +14,15 @@
         </tr>
         </thead>
     <tbody>
-        <% label.forEach(function(label,quantity){ %>
+        <% var i=0; %>
+        <% label.forEach(function(label){ %>
         <tr>
-            <td><%- label %></td>
-            <td><%- quantity %></td>
+            <td><%= label %></td>
+            <% if (typeof quantity != 'undefined') { %>
+                <td><%= quantity[i] %></td>
+                <% i++; %>
+              <% } %>
+            <td><%= quantity %></td>
         </tr>
       <% }); %>
     </tbody>

@@ -14,8 +14,7 @@ app.get("/", function(req, res){
     res.render("home");
 });
 
-
-//render login & signup page
+//render login, signup & account page
 app.get("/login", function(req,res) {
     res.render("login");
 })
@@ -55,7 +54,7 @@ app.get("/search", function(req, res) {
 
 
 
-// on /search results page, user selects which food they want, quantity and measurement, this is sent in json as a post request
+// on search results page, user selects which food they want, quantity and measurement, this is sent in json as a post request
 ///nutrients page displays nutritional breakdown of the selected food
 app.get("/nutrients", function(req, res) {
     //json object containing info on food type & quantity
