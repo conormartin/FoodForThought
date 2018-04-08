@@ -18,6 +18,13 @@
             <td><%- quantity %></td>
         </tr>
       <% }); %>
+<% quantity.forEach(function(label,quantity){ %>
+        <tr>
+            <td><%- label %></td>
+            <td><%- quantity %></td>
+        </tr>
+      <% }); %>
+    
     </tbody>
     </table>
   </div>
