@@ -131,8 +131,6 @@ app.post("/foodlog", function(req,res) {
         method: "GET",
         json: true,
     }, function (error, response, body){
-        console.log(body.hints);
-
         for(var i=0; i<body.hints.length; i++){
             foodType.push(body.hints[i].food);
             calories.push(body.hints[i].food)
@@ -171,10 +169,20 @@ app.get("/foodlog:submitted", function(req,res) {
         body: foodJson
     }, function (error, response, body){
         var nutrients = body.totalNutrients;
+        var nutrients = body.totalNutrients;
+        var label = [];
+        var allPropertyNames = Object.keys(nutrients);
+        for (var j=0; j<allPropertyNames.length; j++) {
+            var name = allPropertyNames[j];
+            var value = nutrients[name];
+            label.push(value.label);
+            var quantityUnrounded = value.quantity;
+            loggedQuantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
+        };
     });
         
     loggedFood.push(food);
-    loggedQuantity.push(quantity);
+    // loggedQuantity.push(quantity);
     res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity});
 });
 
