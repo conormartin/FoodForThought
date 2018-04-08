@@ -2,15 +2,13 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
 <div class="container-fluid">
 	<a class="navbar-brand" href="/"><img src="img/logo9.png"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarResponsive">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto"> <!---pushes navigation to the right hand side-->
-
             <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/blog">Blog</a>
@@ -29,12 +27,12 @@
             </li>
         </ul>
         <!-- search bar -->
-        <div class="search-container">
-        <form class="form-inline" action="/search" method="GET">
-            <input class="form-control col-3" type="search" placeholder="Search for food..." aria-label="Search" name="searchTerm">
-            <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
+        <div class="search-container sm-4">
+            <form class="form-inline" action="/search" method="GET">
+                <input class="form-control sm-4" type="search" placeholder="Search for food..." aria-label="Search" name="searchTerm">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
     </div>
 </div>
 </nav>
