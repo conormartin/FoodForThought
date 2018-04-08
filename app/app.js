@@ -174,6 +174,7 @@ app.get("/foodlog:submitted", function(req,res) {
         var nutrients = body.totalNutrients;
         var quantity = [];
         calories = body.totalNutrients.ENERC_KCAL.quantity;
+        console.log(calories);
         fat = body.totalNutrients.FAT.quantity;
         protein = body.totalNutrients.PROCNT.quantity;
         // var allPropertyNames = Object.keys(nutrients);
