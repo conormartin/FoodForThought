@@ -18,11 +18,10 @@
         <% label.forEach(function(label){ %>
         <tr>
             <td><%= label %></td>
-            <% if (typeof quantity != 'undefined') { %>
+            // <% if (typeof quantity != 'undefined') { %>
                 <td><%= quantity[i] %></td>
                 <% i++; %>
-              <% } %>
-            <td><%= quantity %></td>
+            //   <% } %>
         </tr>
       <% }); %>
     </tbody>
