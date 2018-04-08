@@ -23,8 +23,8 @@
             <div>
               <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:90px">
             </div>
-            <div class="col-auto result">
-              <select id="inputState" class="form-control" name="measurement">Measurement
+            <div class="result">
+              <select id="inputState" class="form-control" name="measurement" style="width:100px">Measurement
                 <option selected disabled> Measure </option>
                 <% measures.forEach(function(measurement){%>
                     <option value= '<%-measurement.uri%>' ><%-measurement.label%>
