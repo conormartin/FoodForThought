@@ -24,6 +24,10 @@ app.get("/signup", function(req,res) {
     res.render("createAccount");
 })
 
+app.get("/account", function(req,res) {
+    res.render("account");
+})
+
 
 
 // get request to API when user searches for food in navbar
