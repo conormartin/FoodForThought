@@ -22,13 +22,6 @@ h1 {
                               transparent 100%); 
 }
 
-/* .result {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
-} */
-
 .col1 {
     float: left;
     width: 50%;
@@ -59,8 +52,9 @@ table {
   background-color: white;
 }
 
-table thead {
+table th {
   background-color: rgb(25,145,145);
+  color: white;
 }
 
 th:nth-child(n+2), td:nth-child(n+2) {
