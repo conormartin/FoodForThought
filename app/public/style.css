@@ -231,6 +231,7 @@ figure {
 .container {
   min-height:100%;
   position:relative;
+  opacity: 0.92;
 }
 #nutrientsPage {
   background-image: url('img/veg.png');
