@@ -6,12 +6,12 @@
 <h2>Search Results</h2>
 
 <div id="searchResultsList">
-    <div>
+    <div class="container">
         <% result.forEach(function(foodType, measurement){ %>
                 <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
                     <input type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
                     <input name="quantity" type="text" placeholder="Quantity">
-                        <select id="inputState" class="form-control" name="measurement">Measurement
+                        <select id="inputState" class="form-control" name="measurement" style="width:100px">Measurement
                             <option selected disabled> Measure </option>
                             <% measures.forEach(function(measurement){%>
                                 <option value= '<%-measurement.uri%>'> <%- measurement.label %> </option>
