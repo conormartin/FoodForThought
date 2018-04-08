@@ -60,14 +60,12 @@
           <% loggedFood.forEach(function(loggedFood){%>
             <tr>
               <td><%= loggedFood %></td>
-              <% if (typeof loggedQuantity != 'undefined') { %>
-                <td><%= loggedQuantity[i] %></td>
-                <% i++; %>
-              <% } %>
+              <td><%= loggedQuantity[i] %></td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
             </tr>
+            <% i++; %>
           <%  }); %>
         </tbody>
         </table>

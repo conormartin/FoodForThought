@@ -122,7 +122,7 @@ app.get("/foodlog", function(req,res) {
 
 
 
-
+var calories = [];
 //shows foodlog page with search results
 app.post("/foodlog", function(req,res) {
     var searchTerm = req.body.searchTerm;
@@ -131,8 +131,11 @@ app.post("/foodlog", function(req,res) {
         method: "GET",
         json: true,
     }, function (error, response, body){
+        console.log(body.hints);
+
         for(var i=0; i<body.hints.length; i++){
             foodType.push(body.hints[i].food);
+            calories.push(body.hints[i].food)
         }
         for(var i=0; i<body.hints[0].measures.length; i++){
             measurement.push(body.hints[0].measures[i]);
