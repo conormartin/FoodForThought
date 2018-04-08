@@ -9,15 +9,15 @@
     <div class="container">
         <% result.forEach(function(foodType, measurement){ %>
                 <form id="resultsForm" class="inline-form" action="/nutrients" method="GET">
-                    <input type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
-                    <input name="quantity" type="text" placeholder="Quantity">
+                    <input class="form-control" type="hidden" name="foodType" value='<%-foodType.uri%>'><%- foodType.label %>
+                    <input class="form-control" name="quantity" type="text" placeholder="Quantity">
                         <select id="inputState" class="form-control" name="measurement" style="width:100px">Measurement
                             <option selected disabled> Measure </option>
                             <% measures.forEach(function(measurement){%>
                                 <option value= '<%-measurement.uri%>'> <%- measurement.label %> </option>
                             <%  }); %>
                         </select>
-                    <input class="btn btn-default btn-primary" type="submit">
+                    <input class="btn btn-primary mb-2" type="submit">
                 </form>
         <%  }); %>
     </div>
