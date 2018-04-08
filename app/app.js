@@ -109,10 +109,7 @@ app.get("/blog", function(req, res) {
 
 
 // arrays to temporarily save food log values until firebase is working
-var foodType = [];
-var measurement = [];
-var loggedFood = [];
-var loggedQuantity = [];
+var foodType = [], measurement = [], loggedFood = [], loggedQuantity = [], calories = [], fat = [], protein = [];
 
 //shows basic foodlog page when clicked on navbar
 app.get("/foodlog", function(req,res) {
@@ -162,9 +159,6 @@ app.get("/foodlog:submitted", function(req,res) {
             "foodURI": foodUrl
         }]
     };
-    var calories;
-    var fat;
-    var protein;
     loggedFood.push(food);
     loggedQuantity.push(quantity);
     request({
