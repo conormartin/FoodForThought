@@ -21,12 +21,12 @@ h2 {
                               transparent 100%); 
 }
 
-.result {
+/* .result {
   margin-top: 15px;
   margin-bottom: 15px;
   margin-left: 5px;
   margin-right: 5px;
-}
+} */
 
 .col1 {
     float: left;
@@ -39,9 +39,8 @@ h2 {
 
 .container {
   background-color: white;
-  margin: 0 20px;
+  /* margin: 0 20px; */
   opacity: 0.92;
-  border-right: thick solid #ececec67;;
 }
 
 #analyseDiet {
