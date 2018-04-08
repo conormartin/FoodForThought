@@ -4,9 +4,10 @@ body {
   background-size: 100%; 
 }
 
-h2 {
+h1 {
   text-align: center;
   margin: 20px;
+  padding: 20px;
 }
 
 .line-in-middle {
