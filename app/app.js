@@ -178,7 +178,7 @@ app.get("/foodlog:submitted", function(req,res) {
         calories = body.calories;
         fat = body.totalNutrients.FAT.quantity;
         protein = body.totalNutrients.PROCNT.quantity;
-
+        console.log(protein);
         res.render("foodlog", {foodType:foodType, measures:measurement, loggedFood:loggedFood, loggedQuantity:loggedQuantity, calories:calories, fat:fat, protein:protein});    
     });
 });
