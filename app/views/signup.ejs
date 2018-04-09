@@ -1,0 +1,47 @@
+<% include partials/head.ejs %>
+<link rel="stylesheet" type="text/css" href="signup.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+</head>
+<body>
+<% include partials/navbar.ejs %>
+    
+    <div id="login_div" class="main-div">
+    <h3>Create an Account</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button onclick="login()">Login to Account</button>
+    <button onclick="create_account()"> Create New Account</button>
+    <button onclick="reset_password()"> Forgot Password</button>
+
+</div>
+
+<div id="user_div" class="loggedin-div">
+    <h3>Welcome to your Account</h3>
+    <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+    <a href="account.html"><button>Account Details</button></a>
+    <button id="verify_btn" onclick="send_verification()"> Send Verification</button>
+
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"> </script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
+        authDomain: "fir-web-login-4c7f6.firebaseapp.com",
+        databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
+        projectId: "fir-web-login-4c7f6",
+        storageBucket: "",
+        messagingSenderId: "265197082111"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="firedb.js"></script>
+    
+    <% include partials/footer.ejs %>
+
