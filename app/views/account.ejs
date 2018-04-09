@@ -1,10 +1,71 @@
+<link rel="stylesheet" href="account.css">
 <% include partials/head.ejs %>
 </head>
 <body>
 <% include partials/navbar.ejs %>
 
-<div class="container">
-    <h1>My Account Page</h1>
+
+<div class="container" align="left">
+    <h1 class="brand"></h1>
+    <div class="wrapper">
+        <div class="company-info">
+            <h3>Create Account</h3>
+
+        </div>
+        <div class="contact">
+            <div class="alert">Your account has been activated</div>
+            <form onsubmit="return false;" id="CreateAccount">
+                <p>
+                    <label>First Name</label>
+                    <input type="text" name="Firstname" id="Firstname" required>
+                </p>
+                <p>
+                    <label>Surname</label>
+                    <input type="text" name="Surname" id="Surname">
+                </p>
+                <p>
+                    <label>Email Address</label>
+                    <input type="email" name="email" id="email" required>
+                </p>
+                <p>
+                    <label>Date of Birth</label>
+                    <input type="date" name="dob" id="dob">
+                </p>
+                <p>
+                    <label>Height</label>
+                    <input type="text" name="height" id="height">
+                </p>
+                <p>
+                    <label>Weight</label>
+                    <input type="text" name="weight" id="weight">
+                </p>
+                <p class="full">
+                    <button type="submit" id="sub1">Submit</button>
+                </p>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+// Initialize Firebase
+
+// Initialize Firebase
+<script>
+var config = {
+apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
+authDomain: "fir-web-login-4c7f6.firebaseapp.com",
+databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
+projectId: "fir-web-login-4c7f6",
+storageBucket: "fir-web-login-4c7f6.appspot.com",
+messagingSenderId: "265197082111"
+};
+firebase.initializeApp(config);
+
+</script>
+<script src="account.js"></script>
+</body>
+
 
   <% include partials/footer.ejs %>
