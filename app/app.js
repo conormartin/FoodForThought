@@ -43,14 +43,13 @@ app.get("/search", function(req, res) {
             foodType.push(body.hints[i].food);
         }
         for(var i=0; i<body.hints.length; i++){
-            for(var j=0; j<body.hints[i].measures[j].length; j++) {
+            console.log(body.hints[i].measures);
+            for(var j=0; j<body.hints[i].measures.length; j++) {
                 measurement.push(body.hints[i].measures[j]);
-                console.log(body.hints[i].measures[j]);
             }
         }
         res.render("searchResults", {result: foodType, measures: measurement});
-    }
-    );
+    });
 });
 
 
