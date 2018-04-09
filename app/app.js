@@ -32,7 +32,6 @@ app.get("/account", function(req,res) {
 // get request to API when user searches for food in navbar
 app.get("/search", function(req, res) {
     var searchTerm = req.query.searchTerm;
-
     request({
         url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
         method: "GET",
@@ -77,9 +76,8 @@ app.get("/nutrients", function(req, res) {
         json: true,
         body: foodJson
     }, function (error, response, body){
+        //nutrients data
         var nutrients = body.totalNutrients;
-
-        // from stackoverflow...??? splits json to only show text
         var label = [];
         var quantity = [];
         var allPropertyNames = Object.keys(nutrients);
@@ -90,7 +88,18 @@ app.get("/nutrients", function(req, res) {
             var quantityUnrounded = value.quantity;
             quantity.push((Math.round(quantityUnrounded * 100) / 100)+value.unit);
         }
-        res.render("nutrients", {label:label, quantity:quantity});
+
+        //rda data
+        var rda = body.totalDaily;
+        var rda2 = [];
+        var allPropertyNames2 = Object.keys(rda);
+        for (var j=0; j<allPropertyNames2.length; j++) {
+            var name = allPropertyNames2[j];
+            var value = rda[name];
+            var quantityUnrounded = value.quantity;
+            rda2.push((Math.round(quantityUnrounded * 100) / 100)+" "+value.unit+" %");
+        }
+        res.render("nutrients", {label:label, quantity:quantity, rda:rda2});
     })
 });
 
