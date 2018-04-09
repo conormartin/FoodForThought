@@ -97,7 +97,7 @@ app.get("/nutrients", function(req, res) {
             var name = allPropertyNames2[j];
             var value = rda[name];
             var quantityUnrounded = value.quantity;
-            rda2.push((Math.round(quantityUnrounded * 100) / 100)+" "+value.unit+" %");
+            rda2.push((Math.round(quantityUnrounded * 100) / 100)+" "+value.unit);
         }
         res.render("nutrients", {label:label, quantity:quantity, rda:rda2});
     })
