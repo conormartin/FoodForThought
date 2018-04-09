@@ -42,14 +42,12 @@ app.get("/search", function(req, res) {
         for(var i=0; i<body.hints.length; i++){
             foodType.push(body.hints[i].food);
         }
-        for(var i=0; i<body.hints.length; i++){
-            console.log(body.hints[i].measures);
-            for(var j=0; j<body.hints[i].measures.length; j++) {
-                measurement.push(body.hints[i].measures[j]);
-            }
+        for(var i=0; i<body.hints[0].measures.length; i++){
+            measurement.push(body.hints[0].measures[i]);
         }
         res.render("searchResults", {result: foodType, measures: measurement});
-    });
+    }
+    );
 });
 
 
