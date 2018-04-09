@@ -247,14 +247,6 @@ figure {
   color: white;
   padding: 20px;
 }
-#searchBar {
-  width:300px;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-}
-.pull-right {
-  float: right;
-}
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
