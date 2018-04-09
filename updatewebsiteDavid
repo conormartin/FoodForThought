@@ -1,4 +1,4 @@
-cd /Users\david\Desktop\FoodForThought
+cd /Users/david/Desktop/FoodForThought
 git fetch
 git pull
 git add .
