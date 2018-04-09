@@ -249,6 +249,7 @@ figure {
 }
 #searchBar {
   width:300px;
+  padding: 0 0 0 0;
 }
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
