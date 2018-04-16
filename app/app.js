@@ -7,6 +7,18 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+// Initialize Firebase 
+    
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
+    authDomain: "fir-web-login-4c7f6.firebaseapp.com",
+    databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
+    projectId: "fir-web-login-4c7f6",
+    storageBucket: "fir-web-login-4c7f6.appspot.com",
+    messagingSenderId: "265197082111"
+};
+firebase.initializeApp(config);
 
 
 //default homepage route
@@ -17,15 +29,15 @@ app.get("/", function(req, res){
 //render login, signup & account page
 app.get("/login", function(req,res) {
     res.render("login");
-})
+});
 
 app.get("/signup", function(req,res) {
     res.render("signup");
-})
+});
 
 app.get("/account", function(req,res) {
     res.render("account");
-})
+});
 
 
 
@@ -43,7 +55,6 @@ app.get("/search", function(req, res) {
             foodType.push(body.hints[i].food);
         }
         for(var i=0; i<body.hints.length; i++){
-            console.log(body.hints[i].measures);
             for(var j=0; j<body.hints[i].measures.length; j++) {
                 measurement.push(body.hints[i].measures[j]);
             }
@@ -56,7 +67,7 @@ app.get("/search", function(req, res) {
 
 
 // on search results page, user selects which food they want, quantity and measurement, this is sent in json as a post request
-///nutrients page displays nutritional breakdown of the selected food
+// nutrients page displays nutritional breakdown of the selected food
 app.get("/nutrients", function(req, res) {
     //json object containing info on food type & quantity
     var quantity = req.query.quantity.replace(/['"]+/g, '');
@@ -192,7 +203,7 @@ app.get("/foodlog:submitted", function(req,res) {
 
 
 
-//renders diet breakdown table from foodlog page (just a template for now)
+//renders diet breakdown table from foodlog page
 app.get("/dietbreakdown", function(req, res){
     res.render("dietbreakdown");
 });
@@ -201,7 +212,7 @@ app.get("/dietbreakdown", function(req, res){
 
 //shows contact page (empty)
 app.get("/contact", function(req, res){
-    res.render("contact");
+    res.render("ContactForm");
 });
 
 
