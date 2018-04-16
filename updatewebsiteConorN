@@ -1,5 +1,4 @@
 cd /Users/Conor\ Nerney/Documents/GitHub/FoodForThought
-git fetch
 git pull
 git add .
 git commit -m"ConorN - Update"
