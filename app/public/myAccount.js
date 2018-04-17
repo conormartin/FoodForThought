@@ -8,21 +8,24 @@
     messagingSenderId: "265197082111"
   };
   firebase.initializeApp(config);
-    // Get the single most recent from the database and
-// update the table with its values. This is called every time the child_added
-// event is triggered on the Firebase reference, which means
-// that this will update EVEN IF you don't refresh the page. Magic.
-firebase.database().ref.limitToLast(1).on('child_added', function(childSnapshot) {
-  // Get the  data from the most recent snapshot of data
-  // added to the list in Firebase
-  users = childSnapshot.val();
-
+  var userId = firebase.auth().currentUser.uid;
+  
+  var database = firebase.database().ref().child('users/' + userId + '/AccountInfo');
+  database.once('value', function(snapshot){
+    if(snapshot.exists()){
+        var content = '';
+        snapshot.forEach(function(data){
   // Update the HTML to display the text
-  $("#Firstname").html(users.Firstname)
-  $("#Surname").html(users.Surname)
-  $("#email").html(users.email)
-  $("#DOB").html(users.dob)
-  $("#Height").html(users.height)
-  $("#Weight").html(users.weight)
-
+          var val= data.val();
+          content +='<tr>';
+          content += '<td>' + val.Firstname + '</td>';
+          content += '<td>' + val.Surname + '</td>';
+          content += '<td>' + val.dob + '</td>';
+          content += '<td>' + val.email + '</td>';
+          content += '<td>' + val.height + '</td>';
+          content += '<td>' + val.weight + '</td>';
+          content += '</tr>';
+        });
+        $('#ex-table').append(content);
+      }
 });
