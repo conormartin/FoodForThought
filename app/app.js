@@ -2,13 +2,12 @@ var express = require('express');
 var request = require("request");
 var bodyParser = require('body-parser');
 var app = express();
+var firebase = require("firebase");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-// Initialize Firebase 
-    
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
@@ -19,6 +18,8 @@ var config = {
     messagingSenderId: "265197082111"
 };
 firebase.initializeApp(config);
+var database = firebase.database();
+
 
 
 //default homepage route
