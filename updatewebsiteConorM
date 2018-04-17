@@ -2,6 +2,10 @@ cd /Users/conormartin/Documents/GitHub/FoodForThought/
 git fetch
 git pull
 git add .
+<<<<<<< HEAD:updatewebsiteConorM
 git commit -m"Conor M - Update"
+=======
+git commit -m "Conor M - Update"
+>>>>>>> 5d20d5c0e391d7b602de3a34bff6d04317b6693d:updatewebsiteConorM
 git push
 ssh vmuser@167.99.94.137 bash -i /home/vmuser/FoodForThought/restart.sh
