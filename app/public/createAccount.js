@@ -1,5 +1,5 @@
-// Initialize Firebase 
-    
+// Initialize Firebase
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
@@ -28,6 +28,7 @@ function submitForm(e){
   var dob = getInputVal('dob');
   var height = getInputVal('height');
   var weight = getInputVal('weight');
+  
 
 
   // Save message
