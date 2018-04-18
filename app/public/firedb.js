@@ -1,6 +1,8 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
+        $('#AccountLink').show();
+        document.getElementById("AccountLink").style.display = "inline";
 
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
@@ -29,6 +31,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     } else {
         // No user is signed in.
+        $('#AccountLink').hide();
+       document.getElementById("AccountLink").style.display = "none";
 
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
@@ -114,6 +118,7 @@ function reset_password(){
 
 
 }
+
 
 function logout(){
     firebase.auth().signOut();
