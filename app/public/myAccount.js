@@ -7,25 +7,53 @@
     storageBucket: "fir-web-login-4c7f6.appspot.com",
     messagingSenderId: "265197082111"
   };
-  firebase.initializeApp(config);
-  var userId = firebase.auth().currentUser.uid;
   
-  var database = firebase.database().ref().child('users/' + userId + '/AccountInfo');
-  database.once('value', function(snapshot){
-    if(snapshot.exists()){
-        var content = '';
-        snapshot.forEach(function(data){
-  // Update the HTML to display the text
-          var val= data.val();
-          content +='<tr>';
-          content += '<td>' + val.Firstname + '</td>';
-          content += '<td>' + val.Surname + '</td>';
-          content += '<td>' + val.dob + '</td>';
-          content += '<td>' + val.email + '</td>';
-          content += '<td>' + val.height + '</td>';
-          content += '<td>' + val.weight + '</td>';
-          content += '</tr>';
-        });
-        $('#ex-table').append(content);
-      }
+  firebase.initializeApp(config);
+  var currentUser;
+  var userid;
+    
+    firebase.auth().onAuthStateChanged(function(user){
+     userid = firebase.auth().currentUser.uid; // user hols the reference to currentUser variable.
+    
+    
+    var database = firebase.database().ref().child('users').child(userid).child('AccountInfo');
+
+     database.once('value', function(snapshot){
+       if(snapshot.exists()){
+           snapshot.forEach(function(data){
+     // Update the HTML to display the text in table
+             var val= data.val();
+             console.log(val);
+             $('#row1').append('<td contenteditable>'+val+'</td>');
+
+           });
+
+          
+         }
+   });
+   
+   document.getElementById("tableButton").addEventListener('click',updateData);
+
+   function updateData(){
+    var table = document.getElementById("ex-table"); 
+    console.log(table.rows[1].cells[0].innerHTML);           
+     var tFirstname= table.rows[1].cells[0].innerHTML;
+     var tSurname= table.rows[1].cells[1].innerHTML;
+     var tEmail= table.rows[1].cells[2].innerHTML;
+     var tDob= table.rows[1].cells[3].innerHTML;
+     var tHeight= table.rows[1].cells[4].innerHTML;
+     var tWeight= table.rows[1].cells[5].innerHTML;
+
+     database.update({
+      Firstname:tFirstname,
+      Surname: tSurname,
+      email:tEmail,
+      dob: tDob,
+      height: tHeight ,
+      weight: tWeight
+     });
+   }
+
+
 });
+  

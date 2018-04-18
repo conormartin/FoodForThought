@@ -37,7 +37,7 @@ app.get("/signup", function(req,res) {
 });
 
 app.get("/account", function(req,res) {
-    res.render("account");
+    res.render("myAccount");
 });
 
 
