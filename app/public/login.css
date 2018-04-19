@@ -125,24 +125,14 @@ button {
     background: #E74B37;
 }
 
-
-
-.btn {
-
-    background-color: steelblue;
-    color: white;
-    font-size: 19px;
-    padding: 7px 14px;
-    border-radius: 5px;
-    border-bottom: 4px solid steelblue;
-
-}
-
-.btn:hover, .btn:focus {
-    background-color: blue!important;
-    border-bottom: 4px solid blue!important;
-
-
+    .btn {
+        background-color: rgb(25,145,145);
+        border: 1px solid whitesmoke;
+    }
+    .btn:hover, .btn:focus {
+        background-color: rgb(13, 78, 78);;
+        border: 1px solid rgb(13, 78, 78);
+    }
 }
 
 .svg-inline--fa {

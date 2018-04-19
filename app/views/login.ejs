@@ -17,18 +17,18 @@
     <div class="form-group">
 
 
-    <input type="text" class = "form-control" placeholder="Username">
+    <input type="email" class = "form-control" placeholder="Username" id="email_field">
 
     </div>
 
         <div class="form-group">
 
-        <input type="password" class = "form-control" placeholder="Password">
+        <input type="password" class = "form-control" placeholder="Password" id="password_field">
 
         </div>
 
 
-        <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
+        <button class="btn" onclick="login()" ><i class="fas fa-sign-in-alt"></i>Login</button>
 
         <div>
 
@@ -42,7 +42,7 @@
     </form>
 
     <div class="col-12 forgot">
-        <a href="reset_password()"> Forgot Password?</a>
+        <a href= "javascript:reset_password()"> Forgot Password?</a>
 
     </div>
 
