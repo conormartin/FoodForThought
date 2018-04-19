@@ -4,13 +4,13 @@
 </head>
 <body>
 <% include partials/navbar.ejs %>
-    
+
     <div id="login_div" class="main-div">
     <h3>Create an Account</h3>
     <input type="email" placeholder="Email..." id="email_field" />
     <input type="password" placeholder="Password..." id="password_field" />
 
-    <button onclick="login()">Login to Account</button>
+    <button class="btn" onclick="login()">Login to Account</button>
     <button onclick="create_account()"> Create New Account</button>
     <button onclick="reset_password()"> Forgot Password</button>
 
@@ -42,6 +42,5 @@
 </script>
 
 <script src="firedb.js"></script>
-    
-    <% include partials/footer.ejs %>
 
+    <% include partials/footer.ejs %>

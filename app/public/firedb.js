@@ -1,7 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        
+
         document.getElementById("AccountLink").style.display = "block";
 
         document.getElementById("user_div").style.display = "block";
@@ -20,18 +20,18 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(email_verified) {
 
                 document.getElementById("verify_btn").style.display = "none";
-                document.getElementById("account").style.display = "block";
+              
             }
             else {
 
                 document.getElementById("verify_btn").style.display = "block";
-                document.getElementById("account").style.display = "none";
+
             }
         }
 
     } else {
         // No user is signed in.
-      
+
        document.getElementById("AccountLink").style.display = "none";
 
         document.getElementById("user_div").style.display = "none";
