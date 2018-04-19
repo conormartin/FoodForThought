@@ -13,12 +13,13 @@
     <div class="col-12 user-image">
         <img src="img/login1.png">
     </div>
-    <form class="col-12">
+
     <div id="login" class="main">
 
       <h3>Login to your Account</h3>
 
 <div class="form-group"
+
     <input type="email" class =  placeholder="Username" id="email_field">
 
     </div>
@@ -28,7 +29,6 @@
         <input type="password" class = "form-control" placeholder="Password" id="password_field">
 
         </div>
-
 
         <a href="/account"><button class="btn" onclick="login()" ><i class="fas fa-sign-in-alt"></i>Login</button></a>
 
@@ -41,7 +41,7 @@
 
 
 
-    </form>
+
 
     <div class="col-12 forgot">
         <a href= "javascript:reset_password()"> Forgot Password?</a>
@@ -71,23 +71,6 @@
 
     <script src="firedb.js"></script>
 
-    <script>
 
-        function signInWithGoogle(){
-        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
-
-            firebase.auth().signInWithPopup(googleAuthProvider)
-                .then( function(data){
-
-                console.log(data)
-            })
-                .catch( function(error) {
-
-            console.log(error)
-            })
-
-        }
-
-    </script>
 </div>
 <% include partials/footer.ejs %>
