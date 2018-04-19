@@ -71,6 +71,24 @@
 
     <script src="firedb.js"></script>
 
+<script>
+
+
+function signInWithGoogle(){
+    var googleAuthProvider = new firebase.auth.GoogleAuthProvider
+
+    firebase.auth().signInWithPopup(googleAuthProvider)
+        .then( function(data){
+
+            console.log(data)
+        })
+        .catch( function(error) {
+
+            console.log(error)
+        })
+
+}
+</script>
 
 </div>
 <% include partials/footer.ejs %>
