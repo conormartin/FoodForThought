@@ -43,8 +43,6 @@ app.get("/signup", function(req,res) {
 });
 
 app.get("/account", function(req,res) {
-
-    
     res.render("myAccount");
 });
 
@@ -228,7 +226,7 @@ app.get("/dietbreakdown", function(req, res){
         if(snapshot.exists()){
             var loggedFood = snapshot.val();
             snapshot.forEach(function(child) {
-                // console.log(child.key+": "+child.val().quantity);
+                console.log(child.key);
             });
         }
     });
@@ -240,7 +238,7 @@ app.get("/dietbreakdown", function(req, res){
             snapshot.forEach(function(child) {
                 var nutrients = child.val().nutrients;
                 var rda = child.val().rda;
-                console.log(rda);
+                // console.log(rda);
             });
             res.render("dietbreakdown", {nutrients:nutrients});
         }
