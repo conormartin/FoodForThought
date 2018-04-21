@@ -1,31 +1,27 @@
 <% include partials/head.ejs %>
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="login1.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 </head>
 <body>
 <% include partials/navbar.ejs %>
 
+
+<form class="form">
 <div class="container">
-
-
 
 
 <div id="login_div" class="main-div">
   <h2>Login</h2>
   <input type="email" placeholder="Email..." id="email_field" />
   <input type="password" placeholder="Password..." id="password_field" />
-
-  <button class="btn" onclick="login()">Login</button>
-</div>
-
-
-<div id="user_div" class="loggedin-div">
-  <h3>Welcome</h3>
-  <p id="user_para">You're currently logged in.</p>
-  <a href="/account"><button class="btn">My Account</button></a>
+  <input type ="button" value="Login" onclick="login()"/>
+  <a href="javascript:reset_password()">Forgot Password?</a>
 
 </div>
+
 </div>
+  </form>
+
 
 
 

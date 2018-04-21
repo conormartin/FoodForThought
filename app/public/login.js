@@ -2,7 +2,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
 
-    document.getElementById("user_div").style.display = "block";
+
+
+
     document.getElementById("login_div").style.display = "none";
 
     var user = firebase.auth().currentUser;
@@ -10,14 +12,16 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
       var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome : " + email_id;
+
 
     }
 
   } else {
     // No user is signed in.
 
-    document.getElementById("user_div").style.display = "none";
+
+
+
     document.getElementById("login_div").style.display = "block";
 
   }
@@ -41,5 +45,28 @@ function login(){
 }
 
 function logout(){
-  firebase.auth().signOut();
+
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+    window.alert("logged out successfully");
+
+}).catch(function(error) {
+  // An error happened.
+});
+}
+
+function reset_password(){
+
+var userEmail = document.getElementById("email_field").value;
+    var auth = firebase.auth();
+    var emailAddress = userEmail;
+
+    auth.sendPasswordResetEmail(userEmail).then(function() {
+        // Email sent.
+        window.alert("Reset Email Sent");
+    }).catch(function(error) {
+        // An error happened.
+        window.alert("Error : ")
+    });
+
 }
