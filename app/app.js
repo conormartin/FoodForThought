@@ -62,21 +62,36 @@ app.get("/about", function(req, res){
 // get request to API when user searches for food in navbar
 app.get("/search", function(req, res) {
     var searchTerm = req.query.searchTerm;
-    request({
-        url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
-        method: "GET",
-        json: true,
-    }, function (error, response, body){
-        database.ref().child('food_db/searches/'+searchTerm).set({
-            results: body.hints
-        });
-        var db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
-        db.once('value', function(snapshot){
-            if(snapshot.exists()){
-                var result = snapshot.val();
-                res.render("searchResults", {result: result});
-            }
-        });
+    var db = database.ref().child('food_db').child('searches');
+    db.once('value', function(snapshot) {
+        if (snapshot.hasChild(searchTerm)) {
+            db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
+            db.once('value', function(snapshot){
+                if(snapshot.exists()){
+                    console.log("Got results from firebase")
+                    var result = snapshot.val();
+                    res.render("searchResults", {result: result});
+                }
+            });
+        } else {
+            request({
+                url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
+                method: "GET",
+                json: true,
+            }, function (error, response, body){
+                database.ref().child('food_db/searches/'+searchTerm).set({
+                    results: body.hints
+                });
+                var db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
+                db.once('value', function(snapshot){
+                    if(snapshot.exists()){
+                        console.log("Got results from api")
+                        var result = snapshot.val();
+                        res.render("searchResults", {result: result});
+                    }
+                });
+            });
+        }
     });
 });
 
@@ -91,36 +106,50 @@ app.get("/nutrients", function(req, res) {
         measureVal      =   req.query.measurementUrl.replace(/['"]+/g, ''),
         measureArray    =   measureVal.split(','),
         measurement     =   measureArray[0],    
-        measurementUrl  =   measureArray[1];   
-
-    var foodJson = {
-        "yield": 1,
-        "ingredients": [{
-            "quantity": Number(quantity),
-            "measureURI": measurementUrl,
-            "foodURI": foodUrl
-        }]
-    };
-    // post request sends foodJson & returns nutritional breakdown
-    request({
-        url: "https://api.edamam.com/api/food-database/nutrients?app_id=2833224e&app_key=f49370b187bbd05209a7472b217a70d7",
-        method: "POST",
-        json: true,
-        body: foodJson
-    }, function (error, response, body){
-        database.ref().child('food_db/nutrition/'+foodName+'_'+quantity+'_'+measurement).set({
-            nutrients: body.totalNutrients,
-            rda: body.totalDaily
-        });
-
-        var db = database.ref().child('food_db').child('nutrition').child(foodName+'_'+quantity+'_'+measurement);
-        db.once('value', function(snapshot){
-            if(snapshot.exists()){
-                var food = snapshot.val();
-                res.render("nutrients", {nutrients: food.nutrients, rda: food.rda});
-            }
-        });
-    })
+        measurementUrl  =   measureArray[1];
+    
+    var db = database.ref().child('food_db').child('nutrition');
+    db.once('value', function(snapshot) {
+        if (snapshot.hasChild(foodName+'_'+quantity+'_'+measurement)) {
+            db = database.ref().child('food_db').child('nutrition').child(foodName+'_'+quantity+'_'+measurement);
+            db.once('value', function(snapshot){
+                if(snapshot.exists()){
+                    var food = snapshot.val();
+                    console.log("Nutrients from Firebase");
+                    res.render("nutrients", {nutrients: food.nutrients, rda: food.rda});
+                }
+            });
+        } else {
+            var foodJson = {
+                "yield": 1,
+                "ingredients": [{
+                    "quantity": Number(quantity),
+                    "measureURI": measurementUrl,
+                    "foodURI": foodUrl
+                }]
+            };
+            // post request sends foodJson & returns nutritional breakdown
+            request({
+                url: "https://api.edamam.com/api/food-database/nutrients?app_id=2833224e&app_key=f49370b187bbd05209a7472b217a70d7",
+                method: "POST",
+                json: true,
+                body: foodJson
+            }, function (error, response, body){
+                database.ref().child('food_db/nutrition/'+foodName+'_'+quantity+'_'+measurement).set({
+                    nutrients: body.totalNutrients,
+                    rda: body.totalDaily
+                });
+                var db = database.ref().child('food_db').child('nutrition').child(foodName+'_'+quantity+'_'+measurement);
+                db.once('value', function(snapshot){
+                    if(snapshot.exists()){
+                        var food = snapshot.val();
+                        console.log("Nutrients from API");
+                        res.render("nutrients", {nutrients: food.nutrients, rda: food.rda});
+                    }
+                });
+            });
+        }
+    });
 });
 
 
@@ -143,30 +172,46 @@ app.get("/foodlog", function(req,res) {
 app.post("/foodlog", function(req,res) {
     var searchTerm = req.body.searchTerm;
     var date = getDate();
-    
-    request({
-        url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
-        method: "GET",
-        json: true,
-    }, function (error, response, body){
-        database.ref().child('food_db/searches/'+searchTerm).set({
-            results: body.hints
-        });
-    });
     var loggedFood;
+
     var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             loggedFood = snapshot.val();
         }
     });
-    var db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
-    db.once('value', function(snapshot){
-        if(snapshot.exists()){
-            var result = snapshot.val();
-            res.render("foodLog", {result:result, loggedFood:loggedFood});
-        }
-    });
+
+    var db = database.ref().child('food_db').child('searches');
+    db.once('value', function(snapshot) {
+        if (snapshot.hasChild(searchTerm)) {
+            console.log("Got results from Firebase")
+            var db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
+            db.once('value', function(snapshot){
+                if(snapshot.exists()){
+                    var result = snapshot.val();
+                    res.render("foodLog", {result:result, loggedFood:loggedFood});
+                }
+            });
+        } else {
+            request({
+                url: 'https://api.edamam.com/api/food-database/parser?ingr='+ searchTerm +'&app_id=2833224e&app_key=e94a0357178f49708c6ae8d70de7fea6',
+                method: "GET",
+                json: true,
+            }, function (error, response, body){
+                database.ref().child('food_db/searches/'+searchTerm).set({
+                    results: body.hints
+                });
+                var db = database.ref().child('food_db').child('searches').child(searchTerm).child('results');
+                db.once('value', function(snapshot){
+                    if(snapshot.exists()){
+                        console.log("Got results from API")
+                        var result = snapshot.val();
+                        res.render("foodLog", {result:result, loggedFood:loggedFood});
+                    }
+                });
+            });
+        } 
+    });   
 });
 
 
@@ -190,24 +235,31 @@ app.get("/foodlog:submitted", function(req,res) {
         measurementUrl : measurementUrl
     });
 
-    var foodJson = {
-        "yield": 1,
-        "ingredients": [{
-            "quantity": Number(quantity),
-            "measureURI": measurementUrl,
-            "foodURI": foodUrl
-        }]
-    };
-    request({
-        url: "https://api.edamam.com/api/food-database/nutrients?app_id=2833224e&app_key=f49370b187bbd05209a7472b217a70d7",
-        method: "POST",
-        json: true,
-        body: foodJson
-    }, function (error, response, body){
-        database.ref().child('food_db/nutrition/'+foodName+'_'+quantity+'_'+measurement).set({
-            nutrients: body.totalNutrients,
-            rda: body.totalDaily
-        });
+    var db = database.ref().child('food_db').child('nutrition');
+    db.once('value', function(snapshot) {
+        if (snapshot.hasChild(foodName+'_'+quantity+'_'+measurement)) {
+            console.log("Nutrients already in db")
+        } else {
+            var foodJson = {
+                "yield": 1,
+                "ingredients": [{
+                    "quantity": Number(quantity),
+                    "measureURI": measurementUrl,
+                    "foodURI": foodUrl
+                }]
+            };
+            request({
+                url: "https://api.edamam.com/api/food-database/nutrients?app_id=2833224e&app_key=f49370b187bbd05209a7472b217a70d7",
+                method: "POST",
+                json: true,
+                body: foodJson
+            }, function (error, response, body){
+                database.ref().child('food_db/nutrition/'+foodName+'_'+quantity+'_'+measurement).set({
+                    nutrients: body.totalNutrients,
+                    rda: body.totalDaily
+                });
+            });
+        }
     });
     var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
     db.once('value', function(snapshot){

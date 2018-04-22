@@ -6,22 +6,18 @@
 
 <div class="container">
     <h2>Diet Nutritional Breakdown</h2>
-
+    <hr>
     <table id="nutritionTable">
         <thead>
-        <th>Nutrient</th>
-        <th>RDA</th>
-        <th>Your Intake</th>
-        <th>Difference</th>
+            <th>Nutrient</th>
+            <th>RDA</th>
+            <th>Your Intake</th>
+            <th>Difference</th>
         </thead>
         <tbody>
-            <% label.forEach(function(label,rda,quantity){ %>
             <tr>
-                <td><%- label %></td>
-                <td><%- rda %></td>
-                <td><%- quantity %></td>
+                <td><%= nutrients %></td>
             </tr>
-        <% }); %>
         </tbody>
     </table>
 </div>

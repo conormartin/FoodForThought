@@ -1,35 +1,37 @@
 <% include partials/head.ejs %>
-<link rel="stylesheet" type="text/css" href="searchResults.css">
 </head>
-<body id="searchResults">
+<body id="nutrientsPage" >
 <% include partials/navbar.ejs %>
 
-<div class="container">
-    <h2>Search Results</h2>
+  <div class="container" style="background-color:white">
+    <h2 style="padding:25px; margin-bottom:0px;">Nutritional Information</h2>
     <hr>
-    <% result.forEach(function(results){ %>
-    <form id="resultsForm" action="/nutrients" method="GET">
-        <div class="form-row align-items-center">
-            <div class="col-sm-4">
-                <input class="form-control" type="hidden" name="foodUrl" value='<%-results.food.uri%>'><%- results.food.label %>
-                <input class="form-control" type="hidden" name="foodName" value='<%-results.food.label%>'>
-            </div>
-            <div class="col-2">
-                <input class="form-control mb-2" name="quantity" type="text" placeholder="Quantity">
-            </div>
-            <div class="col-auto">
-                <select id="inputState" class="form-control" name="measurementUrl">Measurement
-                    <option selected disabled> Measure </option>
-                    <% results.measures.forEach(function(measures){%>
-                        <option value='<%- result.label %>,<%- measures.uri %>'> <%- measures.label %> </option>
-                    <%  }); %>
-                </select>
-            </div>
-            <div class="col-auto">
-                <input class="btn btn-primary mb-2" type="submit">
-            </div>
-        </div> 
-    </form>
-    <%  }); %>
-</div>
-<% include partials/footer.ejs %>
+    <table  id="nutrientsTable" class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Nutrient</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">RDA</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% for(var key in nutrients) { %>
+                <% if (nutrients.hasOwnProperty(key)) { %>
+                    <% var val = nutrients[key]; %>
+            <tr>
+                <td> <%= val.label %></td>
+                <td> <%= Math.round(val.quantity * 100) / 100 + " " + val.unit %></td>
+                <% } %>
+            <% } %>
+            <% for(var key in rda) { %>
+                <% if (rda.hasOwnProperty(key)) { %>
+                    <% var value = rda[key]; %>
+                <td> <%= Math.round(value.quantity * 100) / 100 + " " + value.unit %></td>
+            </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+  </div>
+
+  <% include partials/footer.ejs %>
