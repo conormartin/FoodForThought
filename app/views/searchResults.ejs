@@ -21,7 +21,7 @@
                 <select id="inputState" class="form-control" name="measurementUrl">Measurement
                     <option selected disabled> Measure </option>
                     <% results.measures.forEach(function(measures){%>
-                        <option value='<%- result.label %>,<%- measures.uri %>'> <%- measures.label %> </option>
+                        <option value='<%- measures.label %>,<%- measures.uri %>'> <%- measures.label %> </option>
                     <%  }); %>
                 </select>
             </div>
