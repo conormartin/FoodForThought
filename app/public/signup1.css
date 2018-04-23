@@ -14,14 +14,12 @@ input {
   font-weight: 700;
 
 }
-
 .form {
 	border: 2px solid #fff;
   width: auto;
   height: 120%;
   margin: auto;
 }
-
 .container > div {
 	font-family:  sans-serif;
 	border: 2px solid #F07334;
@@ -49,6 +47,7 @@ h2 {
   padding: .75em 1em .75em 1.5em;
   box-shadow:inset 0px 1px 1px fadeout(white, 95%);
 }
+
 .container input[type=button]{
     background-color: rgb(25,145,145);
     border: 1px solid whitesmoke;
@@ -59,20 +58,6 @@ h2 {
     background-color: rgb(13, 78, 78);
     border: 1px solid rgb(13, 78, 78);
     cursor: pointer;
-}
-.btn{
-  background-color: rgb(25,145,145);
-  border: 1px solid whitesmoke;
-
-}
-.btn:hover {
-    background-color: rgb(13, 78, 78);
-    border: 1px solid rgb(13, 78, 78);
-    cursor: pointer;
-}
-.loggedin-div h3 {
-color: black;
-
 }
 
 .main-div, .loggedin-div {
