@@ -1,5 +1,4 @@
 cd /Users\david\Desktop\FoodForTHought
-git fetch
 git pull
 git add .
 git commit -m"David - Update"

@@ -49,7 +49,7 @@ function writeUserData(Firstname, Surname, email, dob, height, weight){
 
     console.log(userId);
 
-   database.ref('users/' + userId).set({
+   database.ref().child('users/' + userId + '/AccountInfo').set({
         Firstname: Firstname,
         Surname: Surname,
         email:email,

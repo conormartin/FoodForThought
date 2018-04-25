@@ -14,20 +14,24 @@
             <th scope="col">RDA</th>
         </tr>
         </thead>
-    <tbody>
-        <% var i=0; %>
-        <% label.forEach(function(label){ %>
-        <tr>
-            <td><%= label %></td>
-            <td><%= quantity[i] %></td>
-            <td><%= rda[i] %></td>
-            <% i++; %>
-        </tr>
-      <% }); %>
-    </tbody>
+        <tbody>
+            <% for(var key in nutrients) { %>
+                <% if (nutrients.hasOwnProperty(key)) { %>
+                    <% var val = nutrients[key]; %>
+            <tr>
+                <td> <%= val.label %></td>
+                <td> <%= Math.round(val.quantity * 100) / 100 + " " + val.unit %></td>
+                <% } %>
+            <% } %>
+            <% for(var key in rda) { %>
+                <% if (rda.hasOwnProperty(key)) { %>
+                    <% var value = rda[key]; %>
+                <td> <%= Math.round(value.quantity * 100) / 100 + " " + value.unit %></td>
+            </tr>
+                <% } %>
+            <% } %>
+        </tbody>
     </table>
   </div>
 
   <% include partials/footer.ejs %>
-    
-    

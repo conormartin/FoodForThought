@@ -13,30 +13,32 @@
         <button type="submit" class="btn btn-primary searchButton">Search</i></button>
       </form>
       <hr>
-      <% foodType.forEach(function(foodType, measurement){ %>
-        <form id="resultsForm" action="/foodlog:submitted" method="GET">
-          <div class="form-row align-items-center">
-            <div class="col-sm-4">
-              <input class="result" type="hidden" name="foodType" value='<%-foodType.label%>'><%- foodType.label %>
-              <input class="result" type="hidden" name="foodUrl" value='<%-foodType.uri%>'>
+      <% if (typeof result !== "undefined") { %>
+        <% result.forEach(function(results){ %>
+          <form id="resultsForm" action="/foodlog:submitted" method="GET">
+            <div class="form-row align-items-center">
+              <div class="col-sm-4">
+                <input class="result" type="hidden" name="foodName" value='<%-results.food.label%>'><%- results.food.label %>
+                <input class="result" type="hidden" name="foodUrl" value='<%-results.food.uri%>'>
+              </div>
+              <div class="col-2">
+                <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:90px">
+              </div>
+              <div class="col-2">
+                <select id="inputState" class="form-control result" name="measurement" style="width:110px">Measurement
+                  <option selected disabled> Measure </option>
+                  <% results.measures.forEach(function(measures){%>
+                      <option value= '<%-measures.label%>,<%-measures.uri%>' ><%-measures.label%>
+                    <%  }); %>
+                </select>
+              </div>
+              <div class="col-auto">
+                <input class="btn btn-primary result" type="submit">
+              </div>
             </div>
-            <div class="col-2">
-              <input class="form-control result" name="quantity" type="text" placeholder="Amount" style="width:90px">
-            </div>
-            <div class="col-2">
-              <select id="inputState" class="form-control result" name="measurement" style="width:110px">Measurement
-                <option selected disabled> Measure </option>
-                <% measures.forEach(function(measurement){%>
-                    <option value= '<%-measurement.uri%>' ><%-measurement.label%>
-                  <%  }); %>
-              </select>
-            </div>
-            <div class="col-auto">
-              <input class="btn btn-primary result" type="submit">
-            </div>
-          </div>
-        </form>
-      <%  }); %>
+          </form>
+        <%  }); %>
+    <% } %>
     </div>  
     <!--end left column-->
     <!--right hand side of the page column-->
@@ -46,29 +48,28 @@
         <h1>Diary</h1>
         <hr>
         <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col">Food</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Calories</th>
-            <th scope="col">Protein(g)</th>
-            <th scope="col">Fat(g)</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% var i=0; %>
-          <% loggedFood.forEach(function(loggedFood){%>
+            <thead>
             <tr>
-              <td><%= loggedFood %></td>
-              <td><%= loggedQuantity[i] %></td>
-              <td><%= calories[i] %></td>
-              <td><%= protein[i] %></td>
-              <td><%= fat[i] %></td>
+              <th scope="col">Food</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Unit</th>
             </tr>
-            <% i++; %>
-          <%  }); %>
-        </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <tr>
+            <% if (typeof loggedFood !== "undefined") { %>
+              <% for(var key in loggedFood) { %>
+                <% if (loggedFood.hasOwnProperty(key)) { %>
+                    <% var val = loggedFood[key]; %>
+                <td><%= val.foodName %></td>
+                <td><%= val.quantity %></td>
+                <td><%= val.measurement %></td>
+              </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          </tbody>
+          </table>
         <hr>
         <!--end of food logging form-->
         <form>

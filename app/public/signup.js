@@ -20,8 +20,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(email_verified) {
 
                 document.getElementById("verify_btn").style.display = "none";
-              
+
             }
+
             else {
 
                 document.getElementById("verify_btn").style.display = "block";
@@ -42,35 +43,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function login(){
 
-    var userEmail = document.getElementById("email_field").value;
-    var userPass = document.getElementById("password_field").value;
+  var userEmail = document.getElementById("email_field").value;
+  var userPass = document.getElementById("password_field").value;
 
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
 
-        window.alert("Error : " + errorMessage);
+    window.alert("Error : " + errorMessage);
 
-        // ...
-    });
-
-}
-
-function signInWithGoogle(){
-    var googleAuthProvider = new firebase.auth.GoogleAuthProvider
-
-    firebase.auth().signInWithPopup(googleAuthProvider)
-        .then( function(data){
-
-            console.log(data)
-        })
-        .catch( function(error) {
-
-            console.log(error)
-        })
+    // ...
+  });
 
 }
+
 function create_account(){
 
     var userEmail = document.getElementById("email_field").value;
@@ -102,24 +89,17 @@ function send_verification(){
     });
 
 }
+function signInWithGoogle(){
+    var googleAuthProvider = new firebase.auth.GoogleAuthProvider
 
-function reset_password(){
+    firebase.auth().signInWithPopup(googleAuthProvider)
+        .then( function(data){
 
-    var auth = firebase.auth();
-    var emailAddress = "user@example.com";
+            console.log(data)
+        })
+        .catch( function(error) {
 
-    auth.sendPasswordResetEmail(emailAddress).then(function() {
-        // Email sent.
-        window.alert("Reset Email Sent");
-    }).catch(function(error) {
-        // An error happened.
-        window.alert("Error : ")
-    });
+            console.log(error)
+        })
 
-
-}
-
-
-function logout(){
-    firebase.auth().signOut();
 }

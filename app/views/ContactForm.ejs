@@ -1,37 +1,9 @@
-<!doctype html>
-<html>
-<head>
-  <title>Food For Thought</title>
   <link rel="stylesheet" type="text/css" href="TestHomePageStyleSheet.css" />
-  <!--link for search bar button style below -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="contactStyle.css" />
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<% include partials/head.ejs %>
 </head>
-
 <body>
-  <!-- Navigation bar -->
-  <div class="topnav">
-    <h1>Food For Thought</h1>
-  <a class="active" href="TestHomePage.html">Home</a>
-  <a href="BlogPage.html">Blog</a>
-  <a href="#contact">Contact</a>
-  <a href="#diary">Diary</a>
-  <a href="#about">About</a>
-  <a href="#ContactUs">Contact Us</a>
-  <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-<!-- End of nav bar -->
+<% include partials/navbar.ejs %>
 
 <!-- Form Started -->
 <div class="container form-top">
@@ -74,5 +46,5 @@
 
 </div>
 </div>
-</body>
-</html>
+
+<% include partials/footer.ejs %>

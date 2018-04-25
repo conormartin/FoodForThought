@@ -1,7 +1,5 @@
 cd /C:\Users\lynnm\OneDrive\Documents\GitHub\FoodForThought\FoodForThought\
 
-git fetch
-
 git pull
 
 git add .
