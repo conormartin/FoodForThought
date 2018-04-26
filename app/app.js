@@ -336,4 +336,8 @@ app.get("*", function(req, res) {
 });
 
 // Activates server on port 3000
+<<<<<<< HEAD
 app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
+=======
+app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
+>>>>>>> 131fad601139a47eee2a59ccaad28dec002dcc08
