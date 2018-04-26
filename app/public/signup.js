@@ -2,7 +2,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
 
-        document.getElementById("AccountLink").style.display = "block";
+
 
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
@@ -14,13 +14,12 @@ firebase.auth().onAuthStateChanged(function(user) {
             var email_id = user.email;
             var email_verified = user.emailVerified;
 
-            document.getElementById("user_para").innerHTML = "Welcome : " + email_id +
-                "<br/> Verified : " + email_verified;
+
 
             if(email_verified) {
 
                 document.getElementById("verify_btn").style.display = "none";
-
+                  document.getElementById("login_div").style.display = "block";
             }
 
             else {
@@ -28,12 +27,14 @@ firebase.auth().onAuthStateChanged(function(user) {
                 document.getElementById("verify_btn").style.display = "block";
 
             }
+            document.getElementById("user_para").innerHTML = "Welcome : " + email_id +
+                "<br/> Verified : " + email_verified;
         }
 
     } else {
         // No user is signed in.
 
-       document.getElementById("AccountLink").style.display = "none";
+
 
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
@@ -41,22 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-function login(){
 
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
-
-  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-
-    window.alert("Error : " + errorMessage);
-
-    // ...
-  });
-
-}
 
 function create_account(){
 
@@ -72,6 +58,9 @@ function create_account(){
 
         // ...
     });
+    window.alert("Thank you for registering!")
+
+    window.location.href = "/verify";
 }
 
 //sends email verification to the user
@@ -83,10 +72,15 @@ function send_verification(){
         // Email sent.
 
         window.alert("Verification Sent");
+        window.alert("Please check your e-mail");
+        window.location.href = "/signup"
+
     }).catch(function(error) {
         // An error happened.
-        window.alert("Error : ")
+        window.alert("Error : " + error.message);
     });
+
+}
 
 }
 function signInWithGoogle(){

@@ -1,5 +1,6 @@
 <% include partials/head.ejs %>
-<link rel="stylesheet" href="signup1.css">
+
+<link rel="stylesheet" href="verify.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 </head>
 <body>
@@ -9,19 +10,22 @@
 <div class="form">
 <div class="container">
 
+<div id="user_div" class="loggedin-div">
+    <h3>Please Verify your Account</h3>
 
-<div id="login_div" class="main-div">
-  <h2>Sign up</h2>
-  <input type="email" placeholder="Email..." id="email_field" />
-  <input type="password" placeholder="Password..." id="password_field" />
-  <input type ="button" value="Sign up" onclick="create_account()"/>
+    <button class="verify_btn" id="verify_btn" onclick="send_verification()"> Send Verification</button>
 
-</div>
-
-
-
+  </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 

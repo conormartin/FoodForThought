@@ -19,7 +19,6 @@ input {
   width: auto;
   height: 120%;
   margin: auto;
-
 }
 .container > div {
 	font-family:  sans-serif;
@@ -37,11 +36,11 @@ input {
 	box-shadow: 3px 0px 10px 0px black;
 }
 
-h2 {
+h3 {
 
-  color: lighten(@grey, 20%);
+  color: black;
   font-family: 'open sans condensed';
-  font-size: 40px;
+  font-size: 28px;
   display: block;
   background:@grey;
   text-transform: uppercase;
