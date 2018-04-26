@@ -54,7 +54,6 @@ app.get("/about", function(req, res){
     res.render("about");
 });
 
-
 // get request to API when user searches for food in navbar
 app.get("/search", function(req, res) {
     var searchTerm = req.query.searchTerm;
@@ -333,4 +332,8 @@ app.get("*", function(req, res) {
 });
 
 // Activates server on port 3000
+<<<<<<< HEAD
 app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
+=======
+app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
+>>>>>>> 04e70ecd8ff934b1e2985f0040cbcdf65b151ffc
