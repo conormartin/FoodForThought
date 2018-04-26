@@ -104,9 +104,9 @@ app.get("/nutrients", function(req, res) {
         foodName        =   req.query.foodName.replace(/['"]+/g, ''),
         measureVal      =   req.query.measurementUrl.replace(/['"]+/g, ''),
         measureArray    =   measureVal.split(','),
-        measurement     =   measureArray[0],    
+        measurement     =   measureArray[0],
         measurementUrl  =   measureArray[1];
-    
+
     var db = database.ref().child('food_db').child('nutrition');
     db.once('value', function(snapshot) {
         if (snapshot.hasChild(foodName+'_'+quantity+'_'+measurement)) {
@@ -209,8 +209,8 @@ app.post("/foodlog", function(req,res) {
                     }
                 });
             });
-        } 
-    });   
+        }
+    });
 });
 
 
@@ -222,10 +222,10 @@ app.get("/foodlog:submitted", function(req,res) {
         measureVal      =   req.query.measurement.replace(/['"]+/g, ''),
         measureArray    =   measureVal.split(','),
         measurement     =   measureArray[0];
-        measurementUrl  =   measureArray[1];        
+        measurementUrl  =   measureArray[1];
 
     var date = getDate();
-    
+
     database.ref().child('users/bhpuc4il4gecxSMd2gnDJv4Buif2/diet/'+date+'/'+foodName+"_"+quantity+'_'+measurement).set({
         foodName : foodName,
         quantity : quantity,
@@ -327,7 +327,7 @@ app.get("/dietbreakdown", function(req, res){
                 res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
             }
         });
-    });   
+    });
 });
 
 // Reroutes all other requests to a default error message (eg. page does not exist)
@@ -336,8 +336,4 @@ app.get("*", function(req, res) {
 });
 
 // Activates server on port 3000
-<<<<<<< HEAD
 app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
-=======
-app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
->>>>>>> 04e70ecd8ff934b1e2985f0040cbcdf65b151ffc
