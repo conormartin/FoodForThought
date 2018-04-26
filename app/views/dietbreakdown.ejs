@@ -10,13 +10,25 @@
     <table id="nutritionTable">
         <thead>
             <th>Nutrient</th>
-            <th>RDA</th>
             <th>Your Intake</th>
+            <th>RDA</th>            
             <th>Difference</th>
         </thead>
         <tbody>
+        <% for (var key in nutrients) { %>
+            <% if (nutrients.hasOwnProperty(key)) { %>
             <tr>
-                <td><%= nutrients %></td>
+                <td><%= key %></td> 
+                <td><%= nutrients[key] %></td> 
+            <% } %>
+        <% } %>
+
+        <% for (var key in rda) { %>
+            <% if (rda.hasOwnProperty(key)) { %>
+                <td><%= key %></td> 
+                <td><%= rda[key] + " %"%></td> 
+            <% } %> 
+        <% } %>
             </tr>
         </tbody>
     </table>
