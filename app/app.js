@@ -54,6 +54,10 @@ app.get("/about", function(req, res){
     res.render("about");
 });
 
+app.get("/verify", function(req, res){
+    res.render("verify");
+});
+
 // get request to API when user searches for food in navbar
 app.get("/search", function(req, res) {
     var searchTerm = req.query.searchTerm;
