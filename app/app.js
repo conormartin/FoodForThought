@@ -307,7 +307,7 @@ app.get("/dietbreakdown", function(req, res){
                             }
                         }
                     }
-                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').set({
+                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').child().set({
                         totalFood : nutrientsObject,
                         totalRda : rdaObject
                     });
