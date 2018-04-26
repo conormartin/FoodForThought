@@ -38,6 +38,10 @@ app.get("/signup", function(req,res) {
     res.render("signup");
 });
 
+app.get("/userinfo", function(req,res) {
+    res.render("userinfo");
+});
+
 app.get("/account", function(req,res) {
     res.render("myAccount");
 });
@@ -336,4 +340,4 @@ app.get("*", function(req, res) {
 });
 
 // Activates server on port 3000
-app.listen(3000, () => console.log('Food for Thought listening on port 3000!'));
+app.listen(3000, () => console.log('Example app listening on port 3000!'))

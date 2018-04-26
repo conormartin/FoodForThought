@@ -73,7 +73,7 @@ function send_verification(){
 
         window.alert("Verification Sent");
         window.alert("Please check your e-mail");
-        window.location.href = "/account"
+        window.location.href = "/userinfo"
 
     }).catch(function(error) {
         // An error happened.
