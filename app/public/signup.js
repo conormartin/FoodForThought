@@ -81,5 +81,3 @@ function send_verification(){
     });
 
 }
-
-}
