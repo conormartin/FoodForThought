@@ -310,23 +310,23 @@ app.get("/dietbreakdown", function(req, res){
                             }
                         }
                     }
-                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').child().set({
-                        totalFood : nutrientsObject,
-                        totalRda : rdaObject
-                    });
+                    // database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').child().set({
+                    //     totalFood : nutrientsObject,
+                    //     totalRda : rdaObject
+                    // });
                 }
             });
         }
 
-        var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals');
-        db.once('value', function(snapshot){
-            if(snapshot.exists()){
-                var nutrients = snapshot.val().totalFood;
-                var rda = snapshot.val().totalRda;
-                console.log(nutrients);
-                res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
-            }
-        });
+        // var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals');
+        // db.once('value', function(snapshot){
+        //     if(snapshot.exists()){
+        //         var nutrients = snapshot.val().totalFood;
+        //         var rda = snapshot.val().totalRda;
+        //         console.log(nutrients);
+        //         res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
+        //     }
+        // });
     });
 });
 
