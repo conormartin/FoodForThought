@@ -15,21 +15,24 @@
             <th>Difference</th>
         </thead>
         <tbody>
-        <% for (var key in nutrients) { %>
-            <% if (nutrients.hasOwnProperty(key)) { %>
-            <tr>
-                <td><%= key %></td> 
-                <td><%= nutrients[key] %></td> 
+        <% var array = []; %>
+        <% i=0; %>
+        <% for (var key in rda) { %>
+            <% if (rda.hasOwnProperty(key)) { %>
+                <% array.push(rda[key]); %>
             <% } %>
         <% } %>
 
-        <% for (var key in rda) { %>
-            <% if (rda.hasOwnProperty(key)) { %>
-                <td><%= key %></td> 
-                <td><%= rda[key] + " %"%></td> 
-            <% } %> 
+        <% for (var key in nutrients) { %>
+            <% if (nutrients.hasOwnProperty(key)) { %>
+                <tr>
+                    <td><%= key %></td> 
+                    <td><%= nutrients[key] %></td> 
+                    <td><%= array[i] %></td>
+                    <% i++; %>
+                </tr>
+            <% } %>
         <% } %>
-            </tr>
         </tbody>
     </table>
 </div>

@@ -15,19 +15,23 @@
         </tr>
         </thead>
         <tbody>
+            <% var array = []; %>
+            <% i=0; %>
+            <% for(var key in rda) { %>
+                <% if (rda.hasOwnProperty(key)) { %>
+                    <% array.push(rda[key].quantity); %>
+                <% } %>
+            <% } %>
+
             <% for(var key in nutrients) { %>
                 <% if (nutrients.hasOwnProperty(key)) { %>
                     <% var val = nutrients[key]; %>
-            <tr>
-                <td> <%= val.label %></td>
-                <td> <%= Math.round(val.quantity * 100) / 100 + " " + val.unit %></td>
-                <% } %>
-            <% } %>
-            <% for(var key in rda) { %>
-                <% if (rda.hasOwnProperty(key)) { %>
-                    <% var value = rda[key]; %>
-                <td> <%= Math.round(value.quantity * 100) / 100 + " " + value.unit %></td>
-            </tr>
+                    <tr>
+                        <td> <%= val.label %></td>
+                        <td> <%= Math.round(val.quantity * 100) / 100 + " " + val.unit %></td>
+                        <td> <%= (Math.round(array[i] * 100) / 100) + "%"; %></td>
+                        <% i++; %>
+                    </tr>
                 <% } %>
             <% } %>
         </tbody>

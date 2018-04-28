@@ -314,7 +314,7 @@ app.get("/dietbreakdown", function(req, res){
                             }
                         }
                     }
-                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').child().set({
+                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').set({
                         totalFood : nutrientsObject,
                         totalRda : rdaObject
                     });
@@ -326,7 +326,7 @@ app.get("/dietbreakdown", function(req, res){
             if(snapshot.exists()){
                 var nutrients = snapshot.val().totalFood;
                 var rda = snapshot.val().totalRda;
-                console.log(nutrients);
+                // console.log(nutrients);
                 res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
             }
         });
