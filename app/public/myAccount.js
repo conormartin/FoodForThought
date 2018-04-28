@@ -15,12 +15,12 @@ function checkUser(){
     
     firebase.auth().onAuthStateChanged(function(user)
     {
-      console.log(firebase.auth());
+      //console.log(firebase.auth());
       //if(user){
 
       var currentUser= firebase.auth().currentUser;
       
-alert(firebase.auth().currentUser.uid);
+
      userid = currentUser.uid; // user hols the reference to currentUser variable.
     
     

@@ -2,7 +2,7 @@
   <link rel="stylesheet" type="text/css" href="contactStyle.css" />
 <% include partials/head.ejs %>
 </head>
-<body>
+<body onload="checkUser()">
 <% include partials/navbar.ejs %>
 
 <!-- Form Started -->
@@ -46,5 +46,6 @@
 
 </div>
 </div>
+<script src="home.js"></script>
 
 <% include partials/footer.ejs %>

@@ -8,32 +8,23 @@ messagingSenderId: "265197082111"
 };
 firebase.initializeApp(config);
 
-
+function checkUser(){
 firebase.auth().onAuthStateChanged(function(user) {
-  if (!user) {
+  if (user) {
     // User is signed in.
 
-
-
-
-    document.getElementById("acc").style.display = "none";
-
-
-
-
+    document.getElementById("acc").style.display = "block";
 
 
   } else {
     // No user is signed in.
 
 
-
-
     document.getElementById("acc").style.display = "none";
 
   }
 });
-
+}
 function logout(){
 
 firebase.auth().signOut().then(function() {
@@ -42,5 +33,6 @@ firebase.auth().signOut().then(function() {
     window.location.href = "/";
 },(function(error) {
   // An error happened.
-});
+  alert("error");
+}))
 }

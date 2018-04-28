@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="logPageStyle.css">
 <% include partials/head.ejs %>
 </head>
-<body>
+<body onload="checkUser()">
 <% include partials/navbar.ejs %>
   <div class="container line-in-middle">
     <!-- left hand side of page column-->
@@ -77,4 +77,5 @@
     </div>
     <!--end right column-->
   </div>
+  <script src="home.js"></script>
   <% include partials/footer.ejs %>

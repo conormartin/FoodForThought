@@ -5,14 +5,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   
     var user = firebase.auth().currentUser;
-  alert(user.email);
+  
     if(user != null){
-      window.alert(user.uid);
+      //window.alert(user.uid);
 
       var email_id = user.email;
     }
 
-    document.getElementById("AccountLink").style.display = "block";
+    document.getElementById("acc").style.display = "block";
 
     document.getElementById("login_div").style.display = "none";
 
@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
 
 
-    document.getElementById("AccountLink").style.display = "none";
+    document.getElementById("acc").style.display = "none";
 
 
     document.getElementById("login_div").style.display = "block";
@@ -36,6 +36,7 @@ function login(){
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(firebaseUser){
   var user= firebase.auth().currentUser;
+  window.location.href = "/account";
     //window.alert(user.uid);
   })
     // Handle Errors here.
@@ -61,7 +62,7 @@ firebase.auth().signOut().then(function() {
   alert("Error");
   // An error happened.
 });
-document.getElementById("AccountLink").style.display = "none";
+document.getElementById("acc").style.display = "none";
 }
 
 function reset_password(){
