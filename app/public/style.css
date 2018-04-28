@@ -247,6 +247,20 @@ figure {
   color: white;
   padding: 20px;
 }
+#myAccount {
+  background-image: url('img/veg.png');
+}
+#ex-table {
+  background-color: white;
+}
+#ex-table th{
+  background-color: rgb(25,145,145);
+  color: white;
+  padding: 20px;
+}
+#tableButton{
+  margin-left: 40%;
+}
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
