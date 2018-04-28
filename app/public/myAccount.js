@@ -9,16 +9,18 @@ messagingSenderId: "265197082111"
 };
 firebase.initializeApp(config);
 
-
+function checkUser(){
  // var currentUser=firebase.auth().currentUser;
   var userid;
     
     firebase.auth().onAuthStateChanged(function(user)
     {
-      if(user){
+      console.log(firebase.auth());
+      //if(user){
+
       var currentUser= firebase.auth().currentUser;
       
-//alert(firebase.auth().currentUser.uid);
+alert(firebase.auth().currentUser.uid);
      userid = currentUser.uid; // user hols the reference to currentUser variable.
     
     
@@ -60,9 +62,8 @@ firebase.initializeApp(config);
       weight: tWeight
      });
    }
-  }
-  else{
-    alert("error");
-  }
-});
   
+ 
+  });
+  
+}
