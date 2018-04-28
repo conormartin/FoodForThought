@@ -3,9 +3,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
 
-  
+
     var user = firebase.auth().currentUser;
-  
+
     if(user != null){
       //window.alert(user.uid);
 
@@ -52,11 +52,11 @@ function login(){
 }
 
 function logout(){
- 
+
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
     window.alert("logged out successfully");
-    
+
 
 }).catch(function(error) {
   alert("Error");
@@ -71,7 +71,7 @@ var userEmail = document.getElementById("email_field").value;
     var auth = firebase.auth();
     var emailAddress = userEmail;
 
-    auth.sendPasswordResetEmail(userEmail).then(function() {
+    firebase.auth().sendPasswordResetEmail(userEmail).then(function() {
         // Email sent.
         window.alert("Reset Email Sent");
     }).catch(function(error) {
