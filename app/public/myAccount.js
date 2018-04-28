@@ -16,6 +16,7 @@ firebase.initializeApp(config);
     firebase.auth().onAuthStateChanged(function(user)
     {
       if(user){
+        console.log(firebase.auth());
       var currentUser= firebase.auth().currentUser;
       
 //alert(firebase.auth().currentUser.uid);
