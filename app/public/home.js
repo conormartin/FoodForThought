@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     document.getElementById("acc").style.display = "block";
     document.getElementById("btnhid").style.display = "none";
+    document.getElementById("btnhide").style.display = "none";
 
   } else {
     // No user is signed in.
@@ -22,6 +23,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     document.getElementById("acc").style.display = "none";
     document.getElementById("btnhid").style.display = "block";
+    document.getElementById("btnhide").style.display = "block";
   }
 });
 }
@@ -35,4 +37,6 @@ firebase.auth().signOut().then(function() {
   // An error happened.
   alert("error");
 }))
+document.getElementById("btnhid").style.display = "block";
+document.getElementById("btnhide").style.display = "block";
 }

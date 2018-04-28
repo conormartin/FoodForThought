@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     document.getElementById("login_div").style.display = "none";
     document.getElementById("btnhid").style.display = "none";
-
+    document.getElementById("btnhide").style.display = "none";
   } else {
     // No user is signed in.
 
@@ -24,6 +24,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById("acc").style.display = "none";
 
     document.getElementById("btnhid").style.display = "block";
+    document.getElementById("btnhide").style.display = "block";
     document.getElementById("login_div").style.display = "block";
 
   }
@@ -63,6 +64,8 @@ firebase.auth().signOut().then(function() {
   // An error happened.
 });
 document.getElementById("acc").style.display = "none";
+document.getElementById("btnhid").style.display = "block";
+document.getElementById("btnhide").style.display = "block";
 }
 
 function reset_password(){
