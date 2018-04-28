@@ -7,6 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
 
+        document.getElementById("acc").style.display = "block";
         var user = firebase.auth().currentUser;
 
         if(user != null){
@@ -34,7 +35,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     } else {
         // No user is signed in.
 
-
+        document.getElementById("acc").style.display = "none";
 
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
