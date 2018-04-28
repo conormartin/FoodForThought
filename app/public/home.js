@@ -37,6 +37,5 @@ firebase.auth().signOut().then(function() {
   // An error happened.
   alert("error");
 }))
-document.getElementById("btnhid").style.display = "block";
-document.getElementById("btnhide").style.display = "block";
+
 }
