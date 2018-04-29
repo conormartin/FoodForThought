@@ -44,11 +44,11 @@ function checkUser(){
 
    function updateData(){
     var table = document.getElementById("ex-table"); 
-    console.log(table.rows[1].cells[0].innerHTML);           
+    //console.log(table.rows[1].cells[0].innerHTML);           
      var tFirstname= table.rows[1].cells[0].innerHTML;
      var tSurname= table.rows[1].cells[1].innerHTML;
      var tEmail= table.rows[1].cells[2].innerHTML;
-     curentUser.email=tEmail;//update their login email
+     //curentUser.email=tEmail;//update their login email
      var tDob= table.rows[1].cells[3].innerHTML;
      var tHeight= table.rows[1].cells[4].innerHTML;
      var tWeight= table.rows[1].cells[5].innerHTML;
@@ -58,7 +58,7 @@ function checkUser(){
       Surname: tSurname,
       email:tEmail,
       dob: tDob,
-      height: tHeight ,
+      height: tHeight,
       weight: tWeight
      });
    }
