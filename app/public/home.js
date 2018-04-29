@@ -14,16 +14,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
 
     document.getElementById("acc").style.display = "block";
-    document.getElementById("btnhid").style.display = "none";
-    document.getElementById("btnhide").style.display = "none";
+
 
   } else {
     // No user is signed in.
 
 
     document.getElementById("acc").style.display = "none";
-    document.getElementById("btnhid").style.display = "block";
-    document.getElementById("btnhide").style.display = "block";
+
   }
 });
 }
