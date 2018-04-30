@@ -2,23 +2,18 @@ var express = require('express');
 var request = require("request");
 var bodyParser = require('body-parser');
 var app = express();
-var firebase = require("firebase");
+var admin = require('firebase-admin');
+var serviceAccount = require('./fir-web-login-4c7f6-firebase-adminsdk-tu6mq-5eebf71633.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://fir-web-login-4c7f6.firebaseio.com/'
+});
+var database = admin.database();
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyAkKX9E1tE8RBqkA26a6ZqifnfqYZgl9rE",
-    authDomain: "fir-web-login-4c7f6.firebaseapp.com",
-    databaseURL: "https://fir-web-login-4c7f6.firebaseio.com",
-    projectId: "fir-web-login-4c7f6",
-    storageBucket: "fir-web-login-4c7f6.appspot.com",
-    messagingSenderId: "265197082111"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
 
 function getDate() {
     var dateObj =   new Date(),
@@ -28,6 +23,7 @@ function getDate() {
     date    =   day + "-" + month + "-" + year;
     return date;
 }
+
 
 
 app.get("/", function(req, res){
@@ -40,6 +36,10 @@ app.get("/login", function(req,res) {
 
 app.get("/signup", function(req,res) {
     res.render("signup");
+});
+
+app.get("/userinfo", function(req,res) {
+    res.render("userinfo");
 });
 
 app.get("/account", function(req,res) {
@@ -58,6 +58,9 @@ app.get("/about", function(req, res){
     res.render("about");
 });
 
+app.get("/verify", function(req, res){
+    res.render("verify");
+});
 
 // get request to API when user searches for food in navbar
 app.get("/search", function(req, res) {
@@ -105,9 +108,9 @@ app.get("/nutrients", function(req, res) {
         foodName        =   req.query.foodName.replace(/['"]+/g, ''),
         measureVal      =   req.query.measurementUrl.replace(/['"]+/g, ''),
         measureArray    =   measureVal.split(','),
-        measurement     =   measureArray[0],    
+        measurement     =   measureArray[0],
         measurementUrl  =   measureArray[1];
-    
+
     var db = database.ref().child('food_db').child('nutrition');
     db.once('value', function(snapshot) {
         if (snapshot.hasChild(foodName+'_'+quantity+'_'+measurement)) {
@@ -210,8 +213,8 @@ app.post("/foodlog", function(req,res) {
                     }
                 });
             });
-        } 
-    });   
+        }
+    });
 });
 
 
@@ -223,10 +226,10 @@ app.get("/foodlog:submitted", function(req,res) {
         measureVal      =   req.query.measurement.replace(/['"]+/g, ''),
         measureArray    =   measureVal.split(','),
         measurement     =   measureArray[0];
-        measurementUrl  =   measureArray[1];        
+        measurementUrl  =   measureArray[1];
 
     var date = getDate();
-    
+
     database.ref().child('users/bhpuc4il4gecxSMd2gnDJv4Buif2/diet/'+date+'/'+foodName+"_"+quantity+'_'+measurement).set({
         foodName : foodName,
         quantity : quantity,
@@ -255,9 +258,10 @@ app.get("/foodlog:submitted", function(req,res) {
                 body: foodJson
             }, function (error, response, body){
                 database.ref().child('food_db/nutrition/'+foodName+'_'+quantity+'_'+measurement).set({
-                    nutrients: body.totalNutrients,
-                    rda: body.totalDaily
+                    nutrients : body.totalNutrients,
+                    rda : body.totalDaily
                 });
+                console.log("Got nutrients from API")
             });
         }
     });
@@ -273,27 +277,59 @@ app.get("/foodlog:submitted", function(req,res) {
 
 app.get("/dietbreakdown", function(req, res){
     var date = getDate();
+    var dailyLog = [];
+    var nutrientsObject = {};
+    var rdaObject = {};
+
     var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             var loggedFood = snapshot.val();
             snapshot.forEach(function(child) {
-                console.log(child.key);
+                dailyLog.push(child.key);
             });
         }
-    });
+        for(var i=0; i<dailyLog.length; i++) {
+            var db = database.ref().child('food_db').child('nutrition').child(dailyLog[i]);
+            db.once('value', function(snapshot){
+                if(snapshot.exists()){
+                    var nutrients = snapshot.val().nutrients;
+                    var rda = snapshot.val().rda;
 
-    var db = database.ref().child('food_db').child('nutrition');
-    db.once('value', function(snapshot){
-        if(snapshot.exists()){
-            var nutrients;
-            snapshot.forEach(function(child) {
-                var nutrients = child.val().nutrients;
-                var rda = child.val().rda;
-                // console.log(rda);
+                    for (var key in nutrients){
+                        if (nutrients.hasOwnProperty(key)) {
+                            if(nutrientsObject[nutrients[key].label]){
+                                nutrientsObject[nutrients[key].label] += Math.round(nutrients[key].quantity*100)/100;
+                            } else {
+                                nutrientsObject[nutrients[key].label] = Math.round(nutrients[key].quantity*100)/100;
+                            }
+                        }
+                    }
+                    for (var key in rda){
+                        if (rda.hasOwnProperty(key)) {
+                            if(rdaObject[rda[key].label]){
+                                rdaObject[rda[key].label] += Math.round(rda[key].quantity*100)/100;
+                            } else {
+                                rdaObject[rda[key].label] = Math.round(rda[key].quantity*100)/100;
+                            }
+                        }
+                    }
+                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').set({
+                        totalFood : nutrientsObject,
+                        totalRda : rdaObject
+                    });
+                }
             });
-            res.render("dietbreakdown", {nutrients:nutrients});
         }
+        var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals');
+        db.once('value', function(snapshot){
+            if(snapshot.exists()){
+                var nutrients = snapshot.val().totalFood;
+                var rda = snapshot.val().totalRda;
+                // console.log(nutrients);
+                res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
+            }
+        });
     });
 });
 
@@ -302,6 +338,5 @@ app.get("*", function(req, res) {
     res.render("errorPage");
 });
 
-
 // Activates server on port 3000
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.listen(3000, () => console.log('Example app listening on port 3000!'))

@@ -1,19 +1,19 @@
 <% include partials/head.ejs %>
 </head>
-<body>
+<body id ="myAccount" onload="checkUser()">
 <% include partials/navbar.ejs %>
 
-<div class="container">
+<div class="container" style="background-color: white">
     <h1>My Account Page</h1>
-<table style="width:100%" id="ex-table">
+<table style="width:100%" id="ex-table"class="table table-hover">
   <thead>
   <tr id="tr">
-    <th>Firstname</th>
-    <th>Surname</th> 
-    <th>DOB</th>
-    <th>Email</th>
-    <th>Height</th>
-    <th>Weight</th>
+    <th scope="col">Firstname</th>
+    <th scope="col">Surname</th> 
+    <th scope="col">DOB</th>
+    <th scope="col">Email</th>
+    <th scope="col">Height</th>
+    <th scope="col">Weight</th>
   </thead>
   <tbody>
     <tr id="row1">
@@ -22,7 +22,7 @@
   
   </tbody>
  </table> 
- <button type="submit" id="tableButton">Update Account Info</button>
+ <button class="btn btn-primary"type="button" id="tableButton">Update Account Info</button>
 
 </div>
 
