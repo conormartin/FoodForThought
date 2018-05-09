@@ -192,7 +192,7 @@ app.post("/foodlog", function(req,res) {
             db.once('value', function(snapshot){
                 if(snapshot.exists()){
                     var result = snapshot.val();
-                    res.render("foodLog", {result:result, loggedFood:loggedFood});
+                    res.render("foodlog", {result:result, loggedFood:loggedFood});
                 }
             });
         } else {
@@ -209,7 +209,7 @@ app.post("/foodlog", function(req,res) {
                     if(snapshot.exists()){
                         console.log("Got results from API")
                         var result = snapshot.val();
-                        res.render("foodLog", {result:result, loggedFood:loggedFood});
+                        res.render("foodlog", {result:result, loggedFood:loggedFood});
                     }
                 });
             });
