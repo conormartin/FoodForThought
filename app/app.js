@@ -227,6 +227,7 @@ app.get("/foodlog:submitted", function(req,res) {
         measureArray    =   measureVal.split(','),
         measurement     =   measureArray[0];
         measurementUrl  =   measureArray[1];
+        console.log(req)
 
     var date = getDate();
 
