@@ -20,7 +20,7 @@ function checkUser(){
 
       var currentUser= firebase.auth().currentUser;
       
-alert(firebase.auth().currentUser.uid);
+// alert(firebase.auth().currentUser.uid);
      userid = currentUser.uid; // user hols the reference to currentUser variable.
     
     
