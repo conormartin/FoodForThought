@@ -1,7 +1,7 @@
-<link rel="stylesheet" type="text/css" href="dietbreakdown.css">
+<link rel="stylesheet" type="text/css" href="/dietbreakdown.css">
 <% include partials/head.ejs %>
 </head>
-<body>
+<body onload="getUserId()">
 <% include partials/navbar.ejs %>
 
 <div class="container">
@@ -15,20 +15,22 @@
             <th>Difference</th>
         </thead>
         <tbody>
-        <% var array = []; %>
+        <% var rdaArray = []; %>
+        <% var diffArray = []; %>
         <% i=0; %>
         <% for (var key in rda) { %>
             <% if (rda.hasOwnProperty(key)) { %>
-                <% array.push(rda[key]); %>
+                <% rdaArray.push(rda[key]); %>
+                <% diffArray.push(Math.round((100-rda[key])*100/100)); %>
             <% } %>
         <% } %>
-
         <% for (var key in nutrients) { %>
             <% if (nutrients.hasOwnProperty(key)) { %>
                 <tr>
                     <td><%= key %></td> 
                     <td><%= nutrients[key] %></td> 
-                    <td><%= array[i]+"%" %></td>
+                    <td><%= rdaArray[i]+"%" %></td>
+                    <td><%= diffArray[i]+"%" %></td>
                     <% i++; %>
                 </tr>
             <% } %>
@@ -37,4 +39,5 @@
     </table>
 </div>
 
+<script src="/foodlog.js"></script>
 <% include partials/footer.ejs %>

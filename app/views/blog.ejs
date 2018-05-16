@@ -1,11 +1,11 @@
 <% include partials/head.ejs %>
 
-<link rel="stylesheet" type="text/css" href="TestHomePageStyleSheet.css" />
+<link rel="stylesheet" type="text/css" href="/TestHomePageStyleSheet.css" />
 </head>
 
-<body onload="checkUser()">
+<body onload="checkUser(); getUserId()">
  <% include partials/navbar.ejs %>
 
 <iframe width="100%" height="580" src="http://food-for-thought-sample.blogspot.com/"></iframe>
-<script src="home.js"></script>
+<script src="/home.js"></script>
  <% include partials/footer.ejs %>

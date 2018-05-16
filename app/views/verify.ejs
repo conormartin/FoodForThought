@@ -1,9 +1,9 @@
 <% include partials/head.ejs %>
 
-<link rel="stylesheet" href="verify.css">
+<link rel="stylesheet" href="/verify.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 </head>
-<body>
+<body onload="getUserId()">
 <% include partials/navbar.ejs %>
 
 
@@ -47,7 +47,7 @@ messagingSenderId: "265197082111"
 firebase.initializeApp(config);
 
 </script>
-<script src="signup.js"></script>
+<script src="/signup.js"></script>
 
 
 <% include partials/footer.ejs %>

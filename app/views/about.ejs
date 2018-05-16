@@ -1,6 +1,6 @@
 <% include partials/head.ejs %>
 </head>
-<body onload="checkUser()">
+<body onload="checkUser(); getUserId()">
 <% include partials/navbar.ejs %>
 
 <div class="container">
@@ -16,6 +16,6 @@
       	-->
       </p>
 </div>
-<script src="home.js"></script>
+<script src="/home.js"></script>
 
   <% include partials/footer.ejs %>

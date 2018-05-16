@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var admin = require('firebase-admin');
 var serviceAccount = require('./fir-web-login-4c7f6-firebase-adminsdk-tu6mq-5eebf71633.json');
-
+var userId;
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://fir-web-login-4c7f6.firebaseio.com/'
@@ -155,11 +155,11 @@ app.get("/nutrients", function(req, res) {
     });
 });
 
-
 //shows basic foodlog page when clicked on navbar
-app.get("/foodlog", function(req,res) {
+app.get("/foodlog/:userId", function(req,res) {
+    var userId = req.params.userId;
     var date = getDate();
-    var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
+    var db = database.ref().child('users').child(userId).child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             var loggedFood = snapshot.val();
@@ -170,14 +170,15 @@ app.get("/foodlog", function(req,res) {
     });
 })
 
-
 //shows foodlog page with search results
 app.post("/foodlog", function(req,res) {
     var searchTerm = req.body.searchTerm;
+    var userId = req.body.userId;
     var date = getDate();
     var loggedFood;
+    // console.log(userId);
 
-    var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
+    var db = database.ref().child('users').child(userId).child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             loggedFood = snapshot.val();
@@ -224,14 +225,15 @@ app.get("/foodlog:submitted", function(req,res) {
         foodName        =   req.query.foodName.replace(/['"]+/g, ''),
         foodUrl         =   req.query.foodUrl.replace(/['"]+/g, ''),
         measureVal      =   req.query.measurement.replace(/['"]+/g, ''),
+        userId          =   req.query.userId,
         measureArray    =   measureVal.split(','),
-        measurement     =   measureArray[0];
+        measurement     =   measureArray[0],
         measurementUrl  =   measureArray[1];
-        console.log(req)
+        // console.log(req.query);
 
     var date = getDate();
 
-    database.ref().child('users/bhpuc4il4gecxSMd2gnDJv4Buif2/diet/'+date+'/'+foodName+"_"+quantity+'_'+measurement).set({
+    database.ref().child('users/'+userId+'/diet/'+date+'/'+foodName+"_"+quantity+'_'+measurement).set({
         foodName : foodName,
         quantity : quantity,
         measurement: measurement,
@@ -266,7 +268,7 @@ app.get("/foodlog:submitted", function(req,res) {
             });
         }
     });
-    var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
+    var db = database.ref().child('users').child(userId).child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             var loggedFood = snapshot.val();
@@ -276,13 +278,15 @@ app.get("/foodlog:submitted", function(req,res) {
 });
 
 
-app.get("/dietbreakdown", function(req, res){
+app.get("/dietbreakdown/:userId", function(req, res){
     var date = getDate();
     var dailyLog = [];
     var nutrientsObject = {};
     var rdaObject = {};
+    var userId = req.params.userId;
+    console.log(userId);
 
-    var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date);
+    var db = database.ref().child('users').child(userId).child('diet').child(date);
     db.once('value', function(snapshot){
         if(snapshot.exists()){
             var loggedFood = snapshot.val();
@@ -315,19 +319,19 @@ app.get("/dietbreakdown", function(req, res){
                             }
                         }
                     }
-                    database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals').set({
+                    database.ref().child('users').child(userId).child('diet').child(date).child('totals').set({
                         totalFood : nutrientsObject,
                         totalRda : rdaObject
                     });
                 }
             });
         }
-        var db = database.ref().child('users').child('bhpuc4il4gecxSMd2gnDJv4Buif2').child('diet').child(date).child('totals');
+        var db = database.ref().child('users').child(userId).child('diet').child(date).child('totals');
         db.once('value', function(snapshot){
             if(snapshot.exists()){
                 var nutrients = snapshot.val().totalFood;
                 var rda = snapshot.val().totalRda;
-                // console.log(nutrients);
+                console.log(nutrients);
                 res.render("dietbreakdown", {nutrients:nutrients, rda:rda});
             }
         });

@@ -1,6 +1,6 @@
 <% include partials/head.ejs %>
 </head>
-<body id ="myAccount" onload="checkUser()">
+<body id ="myAccount" onload="checkUser(); getUserId()">
 <% include partials/navbar.ejs %>
 
 <div class="container" style="background-color: white">
@@ -31,6 +31,6 @@
  src="https://code.jquery.com/jquery-3.3.1.min.js"
  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
  crossorigin="anonymous"></script>
- <script src="myAccount.js" ></script>
+ <script src="/myAccount.js" ></script>
 
   <% include partials/footer.ejs %>
