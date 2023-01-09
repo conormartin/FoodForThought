@@ -9,7 +9,7 @@
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "firebase": "^4.12.1",
-    "firebase-admin": "^5.12.0",
+    "firebase-admin": "^11.4.1",
     "hoek": "^5.0.3",
     "mon": "0.0.8",
     "nodemon": "^1.17.3",
